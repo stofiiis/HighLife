@@ -59,7 +59,10 @@ public final class ModEvents {
         boolean isGrassLike = block == Blocks.SHORT_GRASS || block == Blocks.TALL_GRASS || block == Blocks.FERN || block == Blocks.LARGE_FERN;
         if (isGrassLike && WeedConfig.areSeedDropsEnabled() && level.getRandom().nextFloat() < WeedConfig.getSeedDropChance()) {
             ItemStack seedDrop = new ItemStack(ModItems.CANNABIS_SEEDS.get());
-            SeedCategoryData.set(seedDrop, SeedCategoryData.randomWildDrop(level.getRandom()));
+            SeedCategoryData.SeedCategory category = SeedCategoryData.randomWildDrop(level.getRandom());
+            StrainData.Strain strain = SeedCategoryData.randomStrain(level.getRandom());
+            SeedCategoryData.set(seedDrop, category);
+            StrainData.set(seedDrop, SeedCategoryData.stackableSeedData(category, strain));
             Block.popResource(level, event.getPos(), seedDrop);
         }
     }
@@ -81,8 +84,9 @@ public final class ModEvents {
                 StrainData.set(droppedStack, budData);
             } else if (droppedStack.is(ModItems.CANNABIS_SEEDS.get())) {
                 StrainData seedData = source.mutate(serverLevel.getRandom(), 0.16F);
-                SeedCategoryData.set(droppedStack, SeedCategoryData.fromQuality(seedData.quality()));
-                StrainData.clear(droppedStack);
+                SeedCategoryData.SeedCategory category = SeedCategoryData.fromQuality(seedData.quality());
+                SeedCategoryData.set(droppedStack, category);
+                StrainData.set(droppedStack, SeedCategoryData.stackableSeedData(category, seedData.strain()));
             }
         }
     }
@@ -184,17 +188,17 @@ public final class ModEvents {
     }
 
     private static void migrateSeedToCategory(ItemStack seedStack, Player player) {
-        if (SeedCategoryData.get(seedStack).isPresent()) {
-            if (StrainData.get(seedStack).isPresent()) {
-                StrainData.clear(seedStack);
-            }
-            return;
-        }
+        SeedCategoryData.SeedCategory category = SeedCategoryData.get(seedStack)
+                .orElseGet(() -> StrainData.get(seedStack)
+                        .map(data -> SeedCategoryData.fromQuality(data.quality()))
+                        .orElseGet(() -> SeedCategoryData.randomWildDrop(player.getRandom())));
 
-        StrainData.get(seedStack).ifPresentOrElse(data -> {
-            SeedCategoryData.set(seedStack, SeedCategoryData.fromQuality(data.quality()));
-            StrainData.clear(seedStack);
-        }, () -> SeedCategoryData.set(seedStack, SeedCategoryData.randomWildDrop(player.getRandom())));
+        StrainData.Strain strain = StrainData.get(seedStack)
+                .map(StrainData::strain)
+                .orElseGet(() -> SeedCategoryData.randomStrain(player.getRandom()));
+
+        SeedCategoryData.set(seedStack, category);
+        StrainData.set(seedStack, SeedCategoryData.stackableSeedData(category, strain));
     }
 
     private static boolean isStrainTrackedItem(Item item) {

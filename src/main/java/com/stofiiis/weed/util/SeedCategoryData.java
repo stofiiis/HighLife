@@ -59,6 +59,11 @@ public final class SeedCategoryData {
         return SeedCategory.COMMON;
     }
 
+    public static StrainData.Strain randomStrain(RandomSource random) {
+        StrainData.Strain[] strains = StrainData.Strain.values();
+        return strains[random.nextInt(strains.length)];
+    }
+
     public static SeedCategory fromQuality(float quality) {
         SeedCategory result = SeedCategory.COMMON;
         for (SeedCategory category : SeedCategory.values()) {
@@ -71,34 +76,42 @@ public final class SeedCategoryData {
         return result;
     }
 
+    public static StrainData stackableSeedData(SeedCategory category, StrainData.Strain strain) {
+        return new StrainData(strain, category.stackQuality());
+    }
+
     public static StrainData rollPlantData(SeedCategory category, RandomSource random) {
-        StrainData.Strain[] strains = StrainData.Strain.values();
-        StrainData.Strain strain = strains[random.nextInt(strains.length)];
+        return rollPlantData(category, randomStrain(random), random);
+    }
+
+    public static StrainData rollPlantData(SeedCategory category, StrainData.Strain strain, RandomSource random) {
         float qualitySpread = category.maxQuality() - category.minQuality();
         float quality = category.minQuality() + random.nextFloat() * qualitySpread;
         return new StrainData(strain, quality);
     }
 
     public enum SeedCategory implements StringRepresentable {
-        COMMON("common", 0xC8C8C8, 0.82F, 0.90F, 48.0F),
-        UNCOMMON("uncommon", 0x77D17E, 0.90F, 0.98F, 24.0F),
-        RARE("rare", 0x5FC6FF, 0.98F, 1.05F, 13.0F),
-        EPIC("epic", 0xB58CFF, 1.05F, 1.12F, 7.0F),
-        LEGENDARY("legendary", 0xFFB34D, 1.12F, 1.20F, 4.0F),
-        MYTHIC("mythic", 0xFF6B9F, 1.20F, 1.28F, 2.5F),
-        PREMIUM("premium", 0xFFD94D, 1.28F, 1.35F, 1.5F);
+        COMMON("common", 0xC8C8C8, 0.82F, 0.90F, 0.86F, 48.0F),
+        UNCOMMON("uncommon", 0x77D17E, 0.90F, 0.98F, 0.94F, 24.0F),
+        RARE("rare", 0x5FC6FF, 0.98F, 1.05F, 1.01F, 13.0F),
+        EPIC("epic", 0xB58CFF, 1.05F, 1.12F, 1.08F, 7.0F),
+        LEGENDARY("legendary", 0xFFB34D, 1.12F, 1.20F, 1.16F, 4.0F),
+        MYTHIC("mythic", 0xFF6B9F, 1.20F, 1.28F, 1.24F, 2.5F),
+        PREMIUM("premium", 0xFFD94D, 1.28F, 1.35F, 1.33F, 1.5F);
 
         private final String id;
         private final int color;
         private final float minQuality;
         private final float maxQuality;
+        private final float stackQuality;
         private final float dropWeight;
 
-        SeedCategory(String id, int color, float minQuality, float maxQuality, float dropWeight) {
+        SeedCategory(String id, int color, float minQuality, float maxQuality, float stackQuality, float dropWeight) {
             this.id = id;
             this.color = color;
             this.minQuality = minQuality;
             this.maxQuality = maxQuality;
+            this.stackQuality = stackQuality;
             this.dropWeight = dropWeight;
         }
 
@@ -117,6 +130,10 @@ public final class SeedCategoryData {
 
         public float maxQuality() {
             return this.maxQuality;
+        }
+
+        public float stackQuality() {
+            return this.stackQuality;
         }
 
         public float dropWeight() {

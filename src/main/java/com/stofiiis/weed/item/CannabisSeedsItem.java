@@ -26,9 +26,9 @@ public class CannabisSeedsItem extends BlockItem {
 
     @Override
     public Component getName(ItemStack stack) {
-        var seedCategory = SeedCategoryData.get(stack);
-        if (seedCategory.isPresent()) {
-            return Component.translatable("item.weed.cannabis_seeds.classed", seedCategory.get().displayNameComponent());
+        var strainData = StrainData.get(stack);
+        if (strainData.isPresent()) {
+            return Component.translatable("item.weed.cannabis_seeds.strained", strainData.get().strainNameComponent());
         }
         return super.getName(stack);
     }
@@ -38,9 +38,15 @@ public class CannabisSeedsItem extends BlockItem {
         StrainData seedData = null;
         if (context.getLevel() instanceof ServerLevel serverLevel) {
             ItemStack usedStack = context.getItemInHand();
-            seedData = SeedCategoryData.get(usedStack)
-                    .map(category -> SeedCategoryData.rollPlantData(category, serverLevel.getRandom()))
-                    .orElseGet(() -> StrainData.get(usedStack).orElseGet(() -> StrainData.random(serverLevel.getRandom())));
+            var seedCategory = SeedCategoryData.get(usedStack);
+            var storedStrain = StrainData.get(usedStack).map(StrainData::strain);
+
+            if (seedCategory.isPresent()) {
+                StrainData.Strain strain = storedStrain.orElseGet(() -> SeedCategoryData.randomStrain(serverLevel.getRandom()));
+                seedData = SeedCategoryData.rollPlantData(seedCategory.get(), strain, serverLevel.getRandom());
+            } else {
+                seedData = StrainData.get(usedStack).orElseGet(() -> StrainData.random(serverLevel.getRandom()));
+            }
         }
 
         InteractionResult result = super.place(context);
@@ -61,16 +67,11 @@ public class CannabisSeedsItem extends BlockItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltipAdder, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltipDisplay, tooltipAdder, flag);
 
+        StrainData.get(stack).ifPresent(data -> tooltipAdder.accept(Component.translatable("tooltip.weed.strain", data.strainNameComponent())));
+
         var seedCategory = SeedCategoryData.get(stack);
         if (seedCategory.isPresent()) {
             seedCategory.ifPresent(category -> tooltipAdder.accept(Component.translatable("tooltip.weed.seed_category", category.displayNameComponent())));
-            return;
         }
-
-        StrainData.get(stack)
-                .ifPresent(data -> {
-                    tooltipAdder.accept(Component.translatable("tooltip.weed.strain", data.strainNameComponent()));
-                    tooltipAdder.accept(Component.translatable("tooltip.weed.quality", data.qualityNameComponent()));
-                });
     }
 }
