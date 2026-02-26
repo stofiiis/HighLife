@@ -1,8 +1,17 @@
 ﻿# HighLife
 by **stofiiis**
 
+![Minecraft](https://img.shields.io/badge/Minecraft-1.21.11-3BA55D?style=for-the-badge)
+![NeoForge](https://img.shields.io/badge/NeoForge-21.11.38--beta-F26B1D?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-1.0.0-2F80ED?style=for-the-badge)
+![Mod ID](https://img.shields.io/badge/Mod%20ID-highlife-6C5CE7?style=for-the-badge)
+
 ## English
 HighLife is a NeoForge content mod for Minecraft 1.21.11 focused on a full cannabis progression loop: collect seeds, grow plants, harvest buds, dry them, breed better seeds, and use different smoking tools.
+
+> **Core Loop:** Seed drop -> Grow -> Harvest -> Dry -> Smoke
+> **Breeding:** Seed Mixer with optional bonemeal speed boost
+> **Progression:** Strain, quality, seed classes, advancements
 
 ### Core Gameplay
 - Wild seed drops from grass and fern blocks.
@@ -37,6 +46,10 @@ HighLife is a NeoForge content mod for Minecraft 1.21.11 focused on a full canna
 
 ## Česky
 HighLife je NeoForge content mod pro Minecraft 1.21.11 zaměřený na kompletní loop kolem konopí: získání seedů, pěstování, sklizeň, sušení, šlechtění lepších seedů a používání různých nástrojů na hulení.
+
+> **Core Loop:** Drop seedu -> Pěstování -> Sklizeň -> Sušení -> Hulení
+> **Šlechtění:** Seed Mixer s volitelným bonemeal zrychlením
+> **Progres:** Strain, quality, seed třídy, advancementy
 
 ### Hlavní Gameplay
 - Drop seedů z trávy a kapradí.
