@@ -3,6 +3,7 @@
   "block.weed.cannabis_crop": "Konopi",
   "block.weed.cannabis_seeds": "Sazenice konopi",
   "block.weed.drying_rack": "Susak",
+  "block.weed.seed_mixer": "Michacka seedu",
   "item.weed.cannabis_seeds": "Sazenice konopi",
   "item.weed.cannabis_seeds.strained": "Sazenice (%s)",
   "item.weed.cannabis_crop": "Sazenice konopi",
@@ -93,6 +94,7 @@
   "hud.weed.cooldown": "Cooldown: %s%%",
   "screen.weed.pipe_control": "Sprava dymky",
   "screen.weed.bong_control": "Sprava bongu",
+  "screen.weed.seed_mixer": "Michacka seedu",
   "screen.weed.load_bowl": "Nabit dymku",
   "screen.weed.pack_bowl": "Naplneni bowl",
   "screen.weed.refill_water": "Doplnit vodu",
@@ -105,5 +107,8 @@
   "screen.weed.insert_dried_bud": "Vloz suseny kvet pro nabiti",
   "screen.weed.insert_bong_items": "Vloz suseny kvet / kyblik s vodou",
   "screen.weed.packing_bowl": "Plneni bowl...",
-  "screen.weed.refilling_water": "Doplnovani vody..."
+  "screen.weed.refilling_water": "Doplnovani vody...",
+  "screen.weed.seed_mixer_idle": "Vloz 2 seedy, hlinu a volitelne bonemeal",
+  "screen.weed.seed_mixer_mixing": "Michani... zbyva %s s",
+  "screen.weed.seed_mixer_ready": "Hotovo. Pravym klikem na block vyzvednes seed"
 }

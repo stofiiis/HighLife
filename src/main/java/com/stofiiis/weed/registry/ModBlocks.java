@@ -3,6 +3,7 @@ package com.stofiiis.weed.registry;
 import com.stofiiis.weed.WeedMod;
 import com.stofiiis.weed.block.CannabisCropBlock;
 import com.stofiiis.weed.block.DryingRackBlock;
+import com.stofiiis.weed.block.SeedMixerBlock;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -30,6 +31,12 @@ public final class ModBlocks {
                     .strength(1.2F)
                     .sound(SoundType.WOOD)
                     .noOcclusion());
+
+    public static final DeferredBlock<SeedMixerBlock> SEED_MIXER = BLOCKS.registerBlock("seed_mixer",
+            SeedMixerBlock::new,
+            properties -> properties.mapColor(MapColor.STONE)
+                    .strength(2.0F)
+                    .sound(SoundType.STONE));
 
     private ModBlocks() {
     }

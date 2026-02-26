@@ -1,6 +1,7 @@
 package com.stofiiis.weed.event;
 
 import com.stofiiis.weed.block.entity.DryingRackBlockEntity;
+import com.stofiiis.weed.block.entity.SeedMixerBlockEntity;
 import com.stofiiis.weed.command.WeedDebugCommand;
 import com.stofiiis.weed.config.WeedConfig;
 import com.stofiiis.weed.registry.ModBlocks;
@@ -48,6 +49,10 @@ public final class ModEvents {
                 && level.getBlockEntity(event.getPos()) instanceof DryingRackBlockEntity dryingRackBlockEntity
                 && !dryingRackBlockEntity.isEmpty()) {
             Block.popResource(level, event.getPos(), dryingRackBlockEntity.extract());
+        }
+        if (event.getState().is(ModBlocks.SEED_MIXER.get())
+                && level.getBlockEntity(event.getPos()) instanceof SeedMixerBlockEntity seedMixerBlockEntity) {
+            seedMixerBlockEntity.dropAllContents();
         }
 
         Player player = event.getPlayer();

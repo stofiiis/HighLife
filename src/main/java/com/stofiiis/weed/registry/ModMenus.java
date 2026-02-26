@@ -3,6 +3,7 @@ package com.stofiiis.weed.registry;
 import com.stofiiis.weed.WeedMod;
 import com.stofiiis.weed.menu.BongControlMenu;
 import com.stofiiis.weed.menu.PipeControlMenu;
+import com.stofiiis.weed.menu.SeedMixerMenu;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
@@ -21,6 +22,10 @@ public final class ModMenus {
     public static final DeferredHolder<MenuType<?>, MenuType<BongControlMenu>> BONG_CONTROL = MENUS.register(
             "bong_control",
             () -> IMenuTypeExtension.create(BongControlMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<SeedMixerMenu>> SEED_MIXER = MENUS.register(
+            "seed_mixer",
+            () -> IMenuTypeExtension.create(SeedMixerMenu::new));
 
     private ModMenus() {
     }

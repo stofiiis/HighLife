@@ -11,5 +11,6 @@ public final class ModMenuScreens {
     public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenus.PIPE_CONTROL.get(), PipeControlScreen::new);
         event.register(ModMenus.BONG_CONTROL.get(), BongControlScreen::new);
+        event.register(ModMenus.SEED_MIXER.get(), SeedMixerScreen::new);
     }
 }
