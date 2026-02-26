@@ -12,8 +12,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 
 public class PipeControlScreen extends AbstractContainerScreen<PipeControlMenu> {
-    private static final int ARROW_X = 87;
-    private static final int ARROW_Y = 35;
+    private static final int ARROW_X = 79;
+    private static final int ARROW_Y = 39;
     private static final Identifier BACKGROUND_TEXTURE = Identifier.fromNamespaceAndPath(WeedMod.MODID, "textures/gui/pipe_control.png");
 
     public PipeControlScreen(PipeControlMenu menu, Inventory playerInventory, Component title) {
@@ -56,7 +56,7 @@ public class PipeControlScreen extends AbstractContainerScreen<PipeControlMenu> 
         Component processText = this.menu.isProcessing()
                 ? Component.translatable("screen.weed.loading")
                 : Component.translatable("screen.weed.insert_dried_bud");
-        guiGraphics.drawString(this.font, processText, 87, 52, 0xC9E8CF);
+        guiGraphics.drawString(this.font, processText, 79, 56, 0xC9E8CF);
     }
 
     @Override
