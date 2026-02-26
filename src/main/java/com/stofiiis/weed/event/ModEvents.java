@@ -1,8 +1,5 @@
 package com.stofiiis.weed.event;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.stofiiis.weed.block.entity.DryingRackBlockEntity;
 import com.stofiiis.weed.command.WeedDebugCommand;
 import com.stofiiis.weed.config.WeedConfig;
@@ -99,8 +96,6 @@ public final class ModEvents {
         ItemStack crafted = event.getCrafting();
         if (crafted.is(ModItems.JOINT.get())) {
             onJointCrafted(event, crafted);
-        } else if (crafted.is(ModItems.CANNABIS_SEEDS.get())) {
-            onSeedBred(event, crafted);
         }
     }
 
@@ -117,91 +112,6 @@ public final class ModEvents {
         if (fromBud != null) {
             StrainData.set(crafted, fromBud.mutate(event.getEntity().getRandom(), 0.03F));
         }
-    }
-
-    private static void onSeedBred(PlayerEvent.ItemCraftedEvent event, ItemStack crafted) {
-        List<ItemStack> parentSeeds = new ArrayList<>(2);
-        for (int slot = 0; slot < event.getInventory().getContainerSize(); slot++) {
-            ItemStack ingredient = event.getInventory().getItem(slot);
-            if (ingredient.is(ModItems.CANNABIS_SEEDS.get())) {
-                parentSeeds.add(ingredient);
-                if (parentSeeds.size() >= 2) {
-                    break;
-                }
-            }
-        }
-
-        if (parentSeeds.size() < 2) {
-            return;
-        }
-
-        ItemStack parentA = parentSeeds.get(0);
-        ItemStack parentB = parentSeeds.get(1);
-        SeedCategoryData.SeedCategory categoryA = resolveSeedCategory(parentA, event.getEntity());
-        SeedCategoryData.SeedCategory categoryB = resolveSeedCategory(parentB, event.getEntity());
-        StrainData.Strain strainA = resolveSeedStrain(parentA, event.getEntity());
-        StrainData.Strain strainB = resolveSeedStrain(parentB, event.getEntity());
-
-        SeedCategoryData.SeedCategory childCategory = rollChildCategory(categoryA, categoryB, strainA == strainB, event.getEntity());
-        StrainData.Strain childStrain = rollChildStrain(strainA, strainB, event.getEntity());
-
-        SeedCategoryData.set(crafted, childCategory);
-        StrainData.set(crafted, SeedCategoryData.stackableSeedData(childCategory, childStrain));
-    }
-
-    private static SeedCategoryData.SeedCategory resolveSeedCategory(ItemStack seedStack, Player player) {
-        return SeedCategoryData.get(seedStack)
-                .orElseGet(() -> StrainData.get(seedStack)
-                        .map(data -> SeedCategoryData.fromQuality(data.quality()))
-                        .orElseGet(() -> SeedCategoryData.randomWildDrop(player.getRandom())));
-    }
-
-    private static StrainData.Strain resolveSeedStrain(ItemStack seedStack, Player player) {
-        return StrainData.get(seedStack)
-                .map(StrainData::strain)
-                .orElseGet(() -> SeedCategoryData.randomStrain(player.getRandom()));
-    }
-
-    private static StrainData.Strain rollChildStrain(StrainData.Strain first, StrainData.Strain second, Player player) {
-        if (first == second) {
-            if (player.getRandom().nextFloat() < 0.92F) {
-                return first;
-            }
-            return SeedCategoryData.randomStrain(player.getRandom());
-        }
-
-        float roll = player.getRandom().nextFloat();
-        if (roll < 0.475F) {
-            return first;
-        }
-        if (roll < 0.95F) {
-            return second;
-        }
-        return SeedCategoryData.randomStrain(player.getRandom());
-    }
-
-    private static SeedCategoryData.SeedCategory rollChildCategory(
-            SeedCategoryData.SeedCategory first,
-            SeedCategoryData.SeedCategory second,
-            boolean sameStrain,
-            Player player) {
-        int maxIndex = SeedCategoryData.SeedCategory.values().length - 1;
-        int resultIndex = Math.round((first.ordinal() + second.ordinal()) / 2.0F);
-        float upChance = sameStrain ? 0.22F : 0.12F;
-        float downChance = sameStrain ? 0.11F : 0.18F;
-
-        if (player.getRandom().nextFloat() < upChance) {
-            resultIndex++;
-        }
-        if (player.getRandom().nextFloat() < downChance) {
-            resultIndex--;
-        }
-        if (player.getRandom().nextFloat() < 0.03F) {
-            resultIndex += player.getRandom().nextBoolean() ? 1 : -1;
-        }
-
-        resultIndex = Math.max(0, Math.min(maxIndex, resultIndex));
-        return SeedCategoryData.SeedCategory.values()[resultIndex];
     }
 
     @SubscribeEvent

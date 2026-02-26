@@ -7,6 +7,7 @@ import com.stofiiis.weed.item.CannabisSeedsItem;
 import com.stofiiis.weed.item.DriedCannabisBudItem;
 import com.stofiiis.weed.item.JointItem;
 import com.stofiiis.weed.item.PipeItem;
+import com.stofiiis.weed.item.SeedMixerItem;
 import com.stofiiis.weed.item.SmokeItem;
 
 import net.minecraft.world.food.FoodProperties;
@@ -27,6 +28,7 @@ public final class ModItems {
     public static final DeferredItem<CannabisBudItem> CANNABIS_BUD = ITEMS.registerItem("cannabis_bud", CannabisBudItem::new);
     public static final DeferredItem<DriedCannabisBudItem> DRIED_CANNABIS_BUD = ITEMS.registerItem("dried_cannabis_bud", DriedCannabisBudItem::new);
     public static final DeferredItem<Item> ROLLING_PAPER = ITEMS.registerSimpleItem("rolling_paper");
+    public static final DeferredItem<SeedMixerItem> SEED_MIXER = ITEMS.registerItem("seed_mixer", SeedMixerItem::new);
 
     public static final DeferredItem<JointItem> JOINT = ITEMS.registerItem("joint",
             properties -> new JointItem(properties.stacksTo(1), 1.0F, 7200, 2600, 1800, 6));

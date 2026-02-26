@@ -18,6 +18,7 @@ Icon bases used and converted to Minecraft 16x16 textures:
 - `wood-pile` by Delapouite
 - `scroll-unfurled` by Lorc
 - `cookie` by Delapouite (used for `weed_brownie`)
+- `pestle-mortar` by Skoll (used for `seed_mixer`)
 
 ## Custom In-Mod Textures
 - `textures/gui/pipe_control.png` handcrafted for this mod by **stofiiis**.

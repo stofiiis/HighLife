@@ -80,6 +80,44 @@ public final class SeedCategoryData {
         return new StrainData(strain, category.stackQuality());
     }
 
+    public static StrainData.Strain breedStrain(StrainData.Strain first, StrainData.Strain second, RandomSource random) {
+        if (first == second) {
+            if (random.nextFloat() < 0.92F) {
+                return first;
+            }
+            return randomStrain(random);
+        }
+
+        float roll = random.nextFloat();
+        if (roll < 0.475F) {
+            return first;
+        }
+        if (roll < 0.95F) {
+            return second;
+        }
+        return randomStrain(random);
+    }
+
+    public static SeedCategory breedCategory(SeedCategory first, SeedCategory second, boolean sameStrain, RandomSource random) {
+        int maxIndex = SeedCategory.values().length - 1;
+        int resultIndex = Math.round((first.ordinal() + second.ordinal()) / 2.0F);
+        float upChance = sameStrain ? 0.22F : 0.12F;
+        float downChance = sameStrain ? 0.11F : 0.18F;
+
+        if (random.nextFloat() < upChance) {
+            resultIndex++;
+        }
+        if (random.nextFloat() < downChance) {
+            resultIndex--;
+        }
+        if (random.nextFloat() < 0.03F) {
+            resultIndex += random.nextBoolean() ? 1 : -1;
+        }
+
+        resultIndex = Math.max(0, Math.min(maxIndex, resultIndex));
+        return SeedCategory.values()[resultIndex];
+    }
+
     public static StrainData rollPlantData(SeedCategory category, RandomSource random) {
         return rollPlantData(category, randomStrain(random), random);
     }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:bowl",
+    "D": "minecraft:dirt",
+    "I": "minecraft:iron_nugget",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " I ",
+    "SBS",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "weed:seed_mixer"
+  }
+}

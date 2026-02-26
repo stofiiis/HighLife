@@ -22,6 +22,7 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.CANNABIS_SEEDS.get());
                         output.accept(ModItems.CANNABIS_BUD.get());
                         output.accept(ModItems.DRIED_CANNABIS_BUD.get());
+                        output.accept(ModItems.SEED_MIXER.get());
                         output.accept(ModItems.ROLLING_PAPER.get());
                         output.accept(ModItems.JOINT.get());
                         output.accept(ModItems.PIPE.get());
