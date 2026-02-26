@@ -1,0 +1,33 @@
+{
+  "parent": "highlife:harvest_bud",
+  "criteria": {
+    "has_dried_bud": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:dried_cannabis_bud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.drying_master.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:dried_cannabis_bud"
+    },
+    "title": {
+      "translate": "advancement.highlife.drying_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dried_bud"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

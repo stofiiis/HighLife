@@ -1,0 +1,36 @@
+{
+  "parent": "highlife:first_smoke",
+  "criteria": {
+    "has_brownie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:weed_brownie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.edible_vibes.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:weed_brownie"
+    },
+    "title": {
+      "translate": "advancement.highlife.edible_vibes.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_brownie"
+    ]
+  ],
+  "rewards": {
+    "experience": 30
+  },
+  "sends_telemetry_event": true
+}

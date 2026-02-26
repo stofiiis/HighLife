@@ -1,0 +1,26 @@
+{
+  "joint_puff": {
+    "sounds": [
+      {
+        "name": "highlife:joint_puff",
+        "volume": 0.85
+      }
+    ]
+  },
+  "pipe_puff": {
+    "sounds": [
+      {
+        "name": "highlife:pipe_puff",
+        "volume": 0.95
+      }
+    ]
+  },
+  "bong_puff": {
+    "sounds": [
+      {
+        "name": "highlife:bong_puff",
+        "volume": 1.1
+      }
+    ]
+  }
+}

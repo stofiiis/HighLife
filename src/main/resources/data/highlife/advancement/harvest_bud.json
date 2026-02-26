@@ -1,0 +1,33 @@
+{
+  "parent": "highlife:root",
+  "criteria": {
+    "has_cannabis_bud": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:cannabis_bud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.harvest_bud.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:cannabis_bud"
+    },
+    "title": {
+      "translate": "advancement.highlife.harvest_bud.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cannabis_bud"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "occupied=false": {
+      "model": "highlife:block/drying_rack"
+    },
+    "occupied=true": {
+      "model": "highlife:block/drying_rack_occupied"
+    }
+  }
+}

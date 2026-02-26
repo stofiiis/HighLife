@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "key": {
+    "P": "#minecraft:planks",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "S S",
+    "S S",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "highlife:drying_rack"
+  }
+}

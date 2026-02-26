@@ -44,7 +44,7 @@ ${mod_description}
 '''
 
 # Path to enum extension config for custom client arm poses.
-enumExtensions="META-INF/weed.enumextensions.json"
+enumExtensions="META-INF/highlife.enumextensions.json"
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 #[[mixins]]

@@ -1,0 +1,30 @@
+{
+  "parent": "highlife:bong_loader",
+  "criteria": {
+    "bong_refilled": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.bong_hydration.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:water_bucket"
+    },
+    "title": {
+      "translate": "advancement.highlife.bong_hydration.title"
+    }
+  },
+  "requirements": [
+    [
+      "bong_refilled"
+    ]
+  ],
+  "rewards": {
+    "experience": 80
+  },
+  "sends_telemetry_event": true
+}

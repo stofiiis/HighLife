@@ -1,4 +1,4 @@
-# Stofiiis Weed (NeoForge)
+# HighLife (NeoForge)
 
 Author: **stofiiis**
 

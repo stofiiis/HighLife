@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "highlife:dried_cannabis_bud",
+    "highlife:rolling_paper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "highlife:joint"
+  }
+}

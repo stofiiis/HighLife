@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "highlife:block/seed_mixer"
+    }
+  }
+}

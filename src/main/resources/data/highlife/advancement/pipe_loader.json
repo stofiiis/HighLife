@@ -1,0 +1,26 @@
+{
+  "parent": "highlife:pipe_apprentice",
+  "criteria": {
+    "pipe_loaded": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.pipe_loader.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:pipe"
+    },
+    "title": {
+      "translate": "advancement.highlife.pipe_loader.title"
+    }
+  },
+  "requirements": [
+    [
+      "pipe_loaded"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "highlife:dried_cannabis_bud",
+    "minecraft:cocoa_beans",
+    "minecraft:wheat",
+    "minecraft:sugar",
+    "#minecraft:eggs"
+  ],
+  "result": {
+    "count": 2,
+    "id": "highlife:weed_brownie"
+  }
+}

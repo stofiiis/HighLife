@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:glass_bottle",
+    "G": "minecraft:glass_pane",
+    "I": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    " G ",
+    "GBG",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "highlife:bong"
+  }
+}

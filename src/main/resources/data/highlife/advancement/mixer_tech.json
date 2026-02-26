@@ -1,0 +1,33 @@
+{
+  "parent": "highlife:rack_builder",
+  "criteria": {
+    "has_seed_mixer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:seed_mixer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.mixer_tech.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:seed_mixer"
+    },
+    "title": {
+      "translate": "advancement.highlife.mixer_tech.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_seed_mixer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

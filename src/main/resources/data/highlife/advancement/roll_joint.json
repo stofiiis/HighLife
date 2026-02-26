@@ -1,0 +1,33 @@
+{
+  "parent": "highlife:drying_master",
+  "criteria": {
+    "has_joint": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:joint"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.roll_joint.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:joint"
+    },
+    "title": {
+      "translate": "advancement.highlife.roll_joint.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_joint"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

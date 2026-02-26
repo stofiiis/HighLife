@@ -1,0 +1,37 @@
+{
+  "parent": "highlife:pipe_apprentice",
+  "criteria": {
+    "has_bong": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:bong"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.bong_engineer.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "highlife:bong"
+    },
+    "title": {
+      "translate": "advancement.highlife.bong_engineer.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_bong"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}
