@@ -1,0 +1,33 @@
+{
+  "parent": "weed:root",
+  "criteria": {
+    "has_drying_rack": {
+      "conditions": {
+        "items": [
+          {
+            "items": "weed:drying_rack"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.weed.rack_builder.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "weed:drying_rack"
+    },
+    "title": {
+      "translate": "advancement.weed.rack_builder.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_drying_rack"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

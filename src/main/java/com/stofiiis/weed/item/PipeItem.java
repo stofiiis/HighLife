@@ -2,6 +2,7 @@ package com.stofiiis.weed.item;
 
 import com.stofiiis.weed.menu.PipeControlMenu;
 import com.stofiiis.weed.registry.ModSounds;
+import com.stofiiis.weed.util.AdvancementTracker;
 import com.stofiiis.weed.util.StrainData;
 
 import net.minecraft.network.chat.Component;
@@ -134,6 +135,7 @@ public class PipeItem extends SmokeItem {
         setLoadedStrain(stack, strainData);
         player.level().playSound(null, player.blockPosition(), SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.PLAYERS, 0.7F, 1.0F);
         player.displayClientMessage(Component.translatable("message.weed.pipe_loaded"), true);
+        AdvancementTracker.onPipeLoaded(player);
     }
 
     private static void setLoaded(ItemStack stack, boolean loaded) {

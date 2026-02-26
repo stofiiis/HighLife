@@ -2,6 +2,7 @@ package com.stofiiis.weed.block.entity;
 
 import com.stofiiis.weed.registry.ModBlockEntities;
 import com.stofiiis.weed.registry.ModItems;
+import com.stofiiis.weed.util.AdvancementTracker;
 import com.stofiiis.weed.util.SeedCategoryData;
 import com.stofiiis.weed.util.StrainData;
 
@@ -38,6 +39,8 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
     private final NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
     private ItemStack readyResult = ItemStack.EMPTY;
     private ItemStack pendingResult = ItemStack.EMPTY;
+    private boolean readyResultBoosted;
+    private boolean pendingBoosted;
     private int progress;
     private int progressMax;
     private boolean mixing;
@@ -67,7 +70,9 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
         }
 
         ItemStack extracted = this.readyResult.copy();
+        boolean boosted = this.readyResultBoosted;
         this.readyResult = ItemStack.EMPTY;
+        this.readyResultBoosted = false;
         if (!player.addItem(extracted)) {
             player.drop(extracted, false);
         }
@@ -75,6 +80,7 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
         this.markDirtyAndSync();
         player.level().playSound(null, this.worldPosition, SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.9F, 1.0F);
         player.displayClientMessage(Component.translatable("message.weed.seed_mixer_ready"), true);
+        AdvancementTracker.onSeedMixCollected(player, boosted);
         return true;
     }
 
@@ -97,6 +103,8 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
         this.clearContent();
         this.readyResult = ItemStack.EMPTY;
         this.pendingResult = ItemStack.EMPTY;
+        this.readyResultBoosted = false;
+        this.pendingBoosted = false;
         this.progress = 0;
         this.progressMax = 0;
         this.mixing = false;
@@ -111,7 +119,9 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
                 blockEntity.progressMax = 0;
                 blockEntity.mixing = false;
                 blockEntity.readyResult = blockEntity.pendingResult.copy();
+                blockEntity.readyResultBoosted = blockEntity.pendingBoosted;
                 blockEntity.pendingResult = ItemStack.EMPTY;
+                blockEntity.pendingBoosted = false;
                 blockEntity.markDirtyAndSync();
                 level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.75F, 1.0F);
             } else if (blockEntity.progress % 20 == 0) {
@@ -165,6 +175,7 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
             this.items.get(SLOT_BONEMEAL).shrink(1);
         }
 
+        this.pendingBoosted = boosted;
         this.progress = 0;
         this.progressMax = boosted ? MIX_TIME_BONEMEAL_TICKS : MIX_TIME_NORMAL_TICKS;
         this.mixing = true;
@@ -192,6 +203,8 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
         output.putBoolean("mixing", this.mixing);
         output.putInt("progress", this.progress);
         output.putInt("progress_max", this.progressMax);
+        output.putBoolean("ready_boosted", this.readyResultBoosted);
+        output.putBoolean("pending_boosted", this.pendingBoosted);
         if (!this.readyResult.isEmpty()) {
             output.store("ready_result", ItemStack.CODEC, this.readyResult);
         }
@@ -208,6 +221,8 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
         this.mixing = input.getBooleanOr("mixing", false);
         this.progress = input.getIntOr("progress", 0);
         this.progressMax = input.getIntOr("progress_max", 0);
+        this.readyResultBoosted = input.getBooleanOr("ready_boosted", false);
+        this.pendingBoosted = input.getBooleanOr("pending_boosted", false);
         this.readyResult = input.read("ready_result", ItemStack.CODEC).orElse(ItemStack.EMPTY);
         this.pendingResult = input.read("pending_result", ItemStack.CODEC).orElse(ItemStack.EMPTY);
     }

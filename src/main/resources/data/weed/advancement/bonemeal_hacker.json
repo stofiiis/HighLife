@@ -1,0 +1,30 @@
+{
+  "parent": "weed:first_cross",
+  "criteria": {
+    "boosted_cross": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.weed.bonemeal_hacker.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bone_meal"
+    },
+    "title": {
+      "translate": "advancement.weed.bonemeal_hacker.title"
+    }
+  },
+  "requirements": [
+    [
+      "boosted_cross"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  },
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "weed:mixer_tech",
+  "criteria": {
+    "cross_done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.weed.first_cross.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "weed:cannabis_seeds"
+    },
+    "title": {
+      "translate": "advancement.weed.first_cross.title"
+    }
+  },
+  "requirements": [
+    [
+      "cross_done"
+    ]
+  ],
+  "rewards": {
+    "experience": 75
+  },
+  "sends_telemetry_event": true
+}

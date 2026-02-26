@@ -3,6 +3,7 @@ package com.stofiiis.weed.item;
 import com.stofiiis.weed.config.WeedConfig;
 import com.stofiiis.weed.menu.BongControlMenu;
 import com.stofiiis.weed.registry.ModSounds;
+import com.stofiiis.weed.util.AdvancementTracker;
 import com.stofiiis.weed.util.StrainData;
 
 import net.minecraft.core.BlockPos;
@@ -142,6 +143,7 @@ public class BongItem extends SmokeItem {
             serverLevel.sendParticles(ParticleTypes.SPLASH, clickedPos.getX() + 0.5D, clickedPos.getY() + 1.0D, clickedPos.getZ() + 0.5D, 8, 0.25D, 0.2D, 0.25D, 0.02D);
         }
         player.displayClientMessage(Component.translatable("message.weed.bong_refilled"), true);
+        AdvancementTracker.onBongRefilled(player);
         return InteractionResult.SUCCESS;
     }
 
@@ -207,12 +209,14 @@ public class BongItem extends SmokeItem {
         setLoadedStrain(stack, loadedStrain);
         player.level().playSound(null, player.blockPosition(), SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.PLAYERS, 0.7F, 1.0F);
         player.displayClientMessage(Component.translatable("message.weed.bong_loaded"), true);
+        AdvancementTracker.onBongLoaded(player);
     }
 
     public static void setWaterFullFromMenu(ItemStack stack, Player player) {
         stack.setDamageValue(0);
         player.level().playSound(null, player.blockPosition(), SoundEvents.BOTTLE_FILL, SoundSource.PLAYERS, 0.85F, 1.0F);
         player.displayClientMessage(Component.translatable("message.weed.bong_refilled"), true);
+        AdvancementTracker.onBongRefilled(player);
     }
 
     private static void setLoaded(ItemStack stack, boolean loaded) {

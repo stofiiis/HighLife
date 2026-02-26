@@ -48,6 +48,35 @@ public final class AdvancementTracker {
         }
     }
 
+    public static void onPipeLoaded(Player player) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            grant(serverPlayer, "pipe_loader", "pipe_loaded");
+        }
+    }
+
+    public static void onBongLoaded(Player player) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            grant(serverPlayer, "bong_loader", "bong_loaded");
+        }
+    }
+
+    public static void onBongRefilled(Player player) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            grant(serverPlayer, "bong_hydration", "bong_refilled");
+        }
+    }
+
+    public static void onSeedMixCollected(Player player, boolean boosted) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+
+        grant(serverPlayer, "first_cross", "cross_done");
+        if (boosted) {
+            grant(serverPlayer, "bonemeal_hacker", "boosted_cross");
+        }
+    }
+
     private static void grant(ServerPlayer player, String advancementId, String criterion) {
         if (player.level().getServer() == null) {
             return;
