@@ -30,6 +30,7 @@ public class SeedMixerMenu extends AbstractContainerMenu {
     private final BlockPos blockPos;
     private final SeedMixerBlockEntity blockEntity;
     private final Container container;
+    private final Player player;
 
     private int mixState;
     private int progress;
@@ -41,6 +42,7 @@ public class SeedMixerMenu extends AbstractContainerMenu {
 
     public SeedMixerMenu(int containerId, Inventory inventory, BlockPos blockPos) {
         super(ModMenus.SEED_MIXER.get(), containerId);
+        this.player = inventory.player;
         this.level = inventory.player.level();
         this.blockPos = blockPos;
 
@@ -118,6 +120,14 @@ public class SeedMixerMenu extends AbstractContainerMenu {
                 SeedMixerMenu.this.progressMax = Math.max(1, value);
             }
         });
+    }
+
+    @Override
+    public void broadcastChanges() {
+        if (!this.level.isClientSide() && this.blockEntity != null && this.blockEntity.getMixState() == SeedMixerBlockEntity.STATE_READY) {
+            this.blockEntity.tryGiveReadyResult(this.player);
+        }
+        super.broadcastChanges();
     }
 
     @Override
