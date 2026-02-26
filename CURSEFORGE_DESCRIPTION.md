@@ -1,4 +1,4 @@
-# HighLife
+﻿# HighLife
 by **stofiiis**
 
 ## English
@@ -35,33 +35,33 @@ HighLife is a NeoForge content mod for Minecraft 1.21.11 focused on a full canna
 
 ---
 
-## Cesky
-HighLife je NeoForge content mod pro Minecraft 1.21.11 zamereny na kompletni loop kolem konopi: ziskani seedu, pestovani, sklizen, suseni, slechtni lepsich seedu a pouzivani ruznych nastroju na huleni.
+## Česky
+HighLife je NeoForge content mod pro Minecraft 1.21.11 zaměřený na kompletní loop kolem konopí: získání seedů, pěstování, sklizeň, sušení, šlechtění lepších seedů a používání různých nástrojů na hulení.
 
-### Hlavni Gameplay
-- Drop seedu z travy a kapradi.
-- Konopna kytka s vice rustovymi fazemi.
-- Sklizen budu a seedu.
-- Drying Rack block s casovanym zpracovanim.
-- Seed Mixer block pro slechtni s progressem.
-- Volitelny bonemeal boost pro rychlejsi michani seedu.
+### Hlavní Gameplay
+- Drop seedů z trávy a kapradí.
+- Konopná kytka s více růstovými fázemi.
+- Sklizeň budů a seedů.
+- Drying Rack block s časovaným zpracováním.
+- Seed Mixer block pro šlechtění s progresem.
+- Volitelný bonemeal boost pro rychlejší míchání seedů.
 
 ### Smoking System
 - Joint, Pipe, Bong a Weed Brownie.
-- Kazdy nastroj se chova jinak:
-- Joint ma vice potahu.
-- Pipe funguje pres nabijeni bowl + kratky delay.
-- Bong funguje pres nabijeni bowl + doplnovani vody.
-- Vlastni zvuky a vlastni animace pouziti (first person i third person).
+- Každý nástroj se chová jinak:
+- Joint má více potahů.
+- Pipe funguje přes nabíjení bowl + krátký delay.
+- Bong funguje přes nabíjení bowl + doplňování vody.
+- Vlastní zvuky a vlastní animace použití (first person i third person).
 
 ### Genetika a Progres
-- Strain a quality data na seedu i budech.
-- Kategorie seedu od Common po Premium.
-- Stackovani seedu pri shodnem strainu/tride.
-- Peace efekt s docasnym omezenim boje.
-- Advancement progres pro pestovani, huleni, nabijeni i slechtni.
+- Strain a quality data u seedů i budů.
+- Kategorie seedů od Common po Premium.
+- Stackování seedů při shodném strainu/třídě.
+- Peace efekt s dočasným omezením boje.
+- Advancement progres pro pěstování, hulení, nabíjení i šlechtění.
 
-### Technicke Info
+### Technické Info
 - Mod Loader: NeoForge
 - Verze Minecraftu: 1.21.11
 - Verze modu: 1.0.0
