@@ -12,6 +12,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 
 public class PipeControlScreen extends AbstractContainerScreen<PipeControlMenu> {
+    private static final int ARROW_X = 87;
+    private static final int ARROW_Y = 35;
     private static final Identifier BACKGROUND_TEXTURE = Identifier.fromNamespaceAndPath(WeedMod.MODID, "textures/gui/pipe_control.png");
 
     public PipeControlScreen(PipeControlMenu menu, Inventory playerInventory, Component title) {
@@ -40,7 +42,7 @@ public class PipeControlScreen extends AbstractContainerScreen<PipeControlMenu> 
                 this.imageHeight,
                 this.imageWidth,
                 this.imageHeight);
-        drawArrowProgress(guiGraphics, x + 79, y + 35, this.menu.getProgressScaled(24), 0x76EA95, 0x30B657);
+        drawArrowProgress(guiGraphics, x + ARROW_X, y + ARROW_Y, this.menu.getProgressScaled(24), 0x76EA95, 0x30B657);
     }
 
     @Override
@@ -54,15 +56,15 @@ public class PipeControlScreen extends AbstractContainerScreen<PipeControlMenu> 
         Component processText = this.menu.isProcessing()
                 ? Component.translatable("screen.weed.loading")
                 : Component.translatable("screen.weed.insert_dried_bud");
-        guiGraphics.drawString(this.font, processText, 79, 52, 0xC9E8CF);
+        guiGraphics.drawString(this.font, processText, 87, 52, 0xC9E8CF);
     }
 
     @Override
     protected void renderTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         super.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        int arrowX = this.leftPos + 79;
-        int arrowY = this.topPos + 35;
+        int arrowX = this.leftPos + ARROW_X;
+        int arrowY = this.topPos + ARROW_Y;
         if (this.isHovering(arrowX - this.leftPos, arrowY - this.topPos, 24, 17, mouseX, mouseY)) {
             int percent = this.menu.isProcessing() ? Mth.clamp(this.menu.getProgressScaled(100), 0, 100) : 0;
             guiGraphics.setTooltipForNextFrame(this.font, Component.translatable("screen.weed.loading_progress", percent), mouseX, mouseY);

@@ -39,7 +39,7 @@ public class PipeControlMenu extends AbstractContainerMenu {
         this.player = inventory.player;
         this.hand = hand;
 
-        this.addSlot(new Slot(this.inputContainer, SLOT_INPUT, 56, 35) {
+        this.addSlot(new Slot(this.inputContainer, SLOT_INPUT, 64, 35) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModItems.DRIED_CANNABIS_BUD.get());
