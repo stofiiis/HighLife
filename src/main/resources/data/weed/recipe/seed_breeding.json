@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "weed:cannabis_seeds",
+    "weed:cannabis_seeds"
+  ],
+  "result": {
+    "count": 1,
+    "id": "weed:cannabis_seeds"
+  }
+}
