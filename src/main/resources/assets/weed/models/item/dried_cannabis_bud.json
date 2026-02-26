@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "weed:item/dried_cannabis_bud"
+  }
+}

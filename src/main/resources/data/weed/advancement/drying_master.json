@@ -1,0 +1,33 @@
+{
+  "parent": "weed:harvest_bud",
+  "criteria": {
+    "has_dried_bud": {
+      "conditions": {
+        "items": [
+          {
+            "items": "weed:dried_cannabis_bud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.weed.drying_master.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "weed:dried_cannabis_bud"
+    },
+    "title": {
+      "translate": "advancement.weed.drying_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_dried_bud"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "weed:drying_master",
+  "criteria": {
+    "has_joint": {
+      "conditions": {
+        "items": [
+          {
+            "items": "weed:joint"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.weed.roll_joint.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "weed:joint"
+    },
+    "title": {
+      "translate": "advancement.weed.roll_joint.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_joint"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
