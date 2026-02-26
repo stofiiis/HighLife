@@ -7,6 +7,7 @@ import com.stofiiis.weed.registry.ModBlocks;
 import com.stofiiis.weed.registry.ModEffects;
 import com.stofiiis.weed.registry.ModItems;
 import com.stofiiis.weed.util.CropGeneticsData;
+import com.stofiiis.weed.util.SeedCategoryData;
 import com.stofiiis.weed.util.StrainData;
 import com.stofiiis.weed.util.ToleranceData;
 
@@ -58,7 +59,7 @@ public final class ModEvents {
         boolean isGrassLike = block == Blocks.SHORT_GRASS || block == Blocks.TALL_GRASS || block == Blocks.FERN || block == Blocks.LARGE_FERN;
         if (isGrassLike && WeedConfig.areSeedDropsEnabled() && level.getRandom().nextFloat() < WeedConfig.getSeedDropChance()) {
             ItemStack seedDrop = new ItemStack(ModItems.CANNABIS_SEEDS.get());
-            StrainData.set(seedDrop, StrainData.random(level.getRandom()));
+            SeedCategoryData.set(seedDrop, SeedCategoryData.randomWildDrop(level.getRandom()));
             Block.popResource(level, event.getPos(), seedDrop);
         }
     }
@@ -80,7 +81,8 @@ public final class ModEvents {
                 StrainData.set(droppedStack, budData);
             } else if (droppedStack.is(ModItems.CANNABIS_SEEDS.get())) {
                 StrainData seedData = source.mutate(serverLevel.getRandom(), 0.16F);
-                StrainData.set(droppedStack, seedData);
+                SeedCategoryData.set(droppedStack, SeedCategoryData.fromQuality(seedData.quality()));
+                StrainData.clear(droppedStack);
             }
         }
     }
@@ -165,16 +167,38 @@ public final class ModEvents {
     private static void ensureInventoryStrains(Player player) {
         for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
-            if (stack.isEmpty() || !isStrainTrackedItem(stack.getItem()) || StrainData.get(stack).isPresent()) {
+            if (stack.isEmpty()) {
+                continue;
+            }
+
+            if (stack.is(ModItems.CANNABIS_SEEDS.get())) {
+                migrateSeedToCategory(stack, player);
+                continue;
+            }
+
+            if (!isStrainTrackedItem(stack.getItem()) || StrainData.get(stack).isPresent()) {
                 continue;
             }
             StrainData.set(stack, StrainData.random(player.getRandom()));
         }
     }
 
+    private static void migrateSeedToCategory(ItemStack seedStack, Player player) {
+        if (SeedCategoryData.get(seedStack).isPresent()) {
+            if (StrainData.get(seedStack).isPresent()) {
+                StrainData.clear(seedStack);
+            }
+            return;
+        }
+
+        StrainData.get(seedStack).ifPresentOrElse(data -> {
+            SeedCategoryData.set(seedStack, SeedCategoryData.fromQuality(data.quality()));
+            StrainData.clear(seedStack);
+        }, () -> SeedCategoryData.set(seedStack, SeedCategoryData.randomWildDrop(player.getRandom())));
+    }
+
     private static boolean isStrainTrackedItem(Item item) {
-        return item == ModItems.CANNABIS_SEEDS.get()
-                || item == ModItems.CANNABIS_BUD.get()
+        return item == ModItems.CANNABIS_BUD.get()
                 || item == ModItems.DRIED_CANNABIS_BUD.get()
                 || item == ModItems.JOINT.get();
     }
