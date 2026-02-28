@@ -1,0 +1,26 @@
+{
+  "parent": "highlife:prepare_roll",
+  "criteria": {
+    "infusion_used": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.first_infusion.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:herb_roll"
+    },
+    "title": {
+      "translate": "advancement.highlife.first_infusion.title"
+    }
+  },
+  "requirements": [
+    [
+      "infusion_used"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

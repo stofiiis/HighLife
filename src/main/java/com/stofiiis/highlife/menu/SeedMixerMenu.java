@@ -63,13 +63,13 @@ public class SeedMixerMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(this.container, SLOT_SEED_A, 35, 26) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItems.CANNABIS_SEEDS.get());
+                return stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
             }
         });
         this.addSlot(new Slot(this.container, SLOT_SEED_B, 53, 26) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItems.CANNABIS_SEEDS.get());
+                return stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
             }
         });
         this.addSlot(new Slot(this.container, SLOT_DIRT, 35, 52) {
@@ -144,7 +144,7 @@ public class SeedMixerMenu extends AbstractContainerMenu {
             if (!this.moveItemStackTo(sourceStack, INV_START, INV_END + 1, true)) {
                 return ItemStack.EMPTY;
             }
-        } else if (sourceStack.is(ModItems.CANNABIS_SEEDS.get())) {
+        } else if (sourceStack.is(ModItems.MYSTIC_HERB_SEEDS.get())) {
             if (!this.moveItemStackTo(sourceStack, SLOT_SEED_A, SLOT_DIRT, false)) {
                 return ItemStack.EMPTY;
             }

@@ -11,34 +11,34 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 public final class AdvancementTracker {
-    private static final String TAG_USED_JOINT = HighLifeMod.MODID + ".used_joint";
-    private static final String TAG_USED_PIPE = HighLifeMod.MODID + ".used_pipe";
-    private static final String TAG_USED_BONG = HighLifeMod.MODID + ".used_bong";
+    private static final String TAG_USED_HERB_ROLL = HighLifeMod.MODID + ".used_herb_roll";
+    private static final String TAG_USED_INFUSION_WAND = HighLifeMod.MODID + ".used_infusion_wand";
+    private static final String TAG_USED_ALCHEMY_FLASK = HighLifeMod.MODID + ".used_alchemy_flask";
 
     private AdvancementTracker() {
     }
 
-    public static void onSmokeUsed(Player player, ItemStack usedStack) {
+    public static void onInfusionUsed(Player player, ItemStack usedStack) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
 
-        grant(serverPlayer, "first_smoke", "smoked_any");
+        grant(serverPlayer, "first_infusion", "infusion_used");
 
         CompoundTag persistentData = serverPlayer.getPersistentData();
-        if (usedStack.is(ModItems.JOINT.get())) {
-            persistentData.putBoolean(TAG_USED_JOINT, true);
-        } else if (usedStack.is(ModItems.PIPE.get())) {
-            persistentData.putBoolean(TAG_USED_PIPE, true);
-        } else if (usedStack.is(ModItems.BONG.get())) {
-            persistentData.putBoolean(TAG_USED_BONG, true);
+        if (usedStack.is(ModItems.HERB_ROLL.get())) {
+            persistentData.putBoolean(TAG_USED_HERB_ROLL, true);
+        } else if (usedStack.is(ModItems.INFUSION_WAND.get())) {
+            persistentData.putBoolean(TAG_USED_INFUSION_WAND, true);
+        } else if (usedStack.is(ModItems.ALCHEMY_FLASK.get())) {
+            persistentData.putBoolean(TAG_USED_ALCHEMY_FLASK, true);
         }
 
-        boolean smokedJoint = persistentData.getBooleanOr(TAG_USED_JOINT, false);
-        boolean smokedPipe = persistentData.getBooleanOr(TAG_USED_PIPE, false);
-        boolean smokedBong = persistentData.getBooleanOr(TAG_USED_BONG, false);
-        if (smokedJoint && smokedPipe && smokedBong) {
-            grant(serverPlayer, "smoke_trinity", "all_three_tools");
+        boolean usedHerbRoll = persistentData.getBooleanOr(TAG_USED_HERB_ROLL, false);
+        boolean usedInfusionWand = persistentData.getBooleanOr(TAG_USED_INFUSION_WAND, false);
+        boolean usedAlchemyFlask = persistentData.getBooleanOr(TAG_USED_ALCHEMY_FLASK, false);
+        if (usedHerbRoll && usedInfusionWand && usedAlchemyFlask) {
+            grant(serverPlayer, "tool_trinity", "all_three_tools");
         }
     }
 
@@ -48,21 +48,21 @@ public final class AdvancementTracker {
         }
     }
 
-    public static void onPipeLoaded(Player player) {
+    public static void onWandLoaded(Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
-            grant(serverPlayer, "pipe_loader", "pipe_loaded");
+            grant(serverPlayer, "wand_loader", "infusion_wand_loaded");
         }
     }
 
-    public static void onBongLoaded(Player player) {
+    public static void onFlaskLoaded(Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
-            grant(serverPlayer, "bong_loader", "bong_loaded");
+            grant(serverPlayer, "flask_loader", "alchemy_flask_loaded");
         }
     }
 
-    public static void onBongRefilled(Player player) {
+    public static void onFlaskRefilled(Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
-            grant(serverPlayer, "bong_hydration", "bong_refilled");
+            grant(serverPlayer, "flask_hydration", "alchemy_flask_refilled");
         }
     }
 

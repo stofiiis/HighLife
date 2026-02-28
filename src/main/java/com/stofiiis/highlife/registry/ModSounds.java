@@ -12,9 +12,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModSounds {
     private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Registries.SOUND_EVENT, HighLifeMod.MODID);
 
-    public static final DeferredHolder<SoundEvent, SoundEvent> JOINT_PUFF = register("joint_puff");
-    public static final DeferredHolder<SoundEvent, SoundEvent> PIPE_PUFF = register("pipe_puff");
-    public static final DeferredHolder<SoundEvent, SoundEvent> BONG_PUFF = register("bong_puff");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ROLL_CAST = register("roll_cast");
+    public static final DeferredHolder<SoundEvent, SoundEvent> WAND_CHARGE = register("wand_charge");
+    public static final DeferredHolder<SoundEvent, SoundEvent> FLASK_BUBBLE = register("flask_bubble");
 
     private ModSounds() {
     }

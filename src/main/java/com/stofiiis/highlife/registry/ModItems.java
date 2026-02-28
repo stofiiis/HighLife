@@ -1,13 +1,13 @@
 package com.stofiiis.highlife.registry;
 
 import com.stofiiis.highlife.HighLifeMod;
-import com.stofiiis.highlife.item.BongItem;
-import com.stofiiis.highlife.item.CannabisBudItem;
-import com.stofiiis.highlife.item.CannabisSeedsItem;
-import com.stofiiis.highlife.item.DriedCannabisBudItem;
-import com.stofiiis.highlife.item.JointItem;
-import com.stofiiis.highlife.item.PipeItem;
-import com.stofiiis.highlife.item.SmokeItem;
+import com.stofiiis.highlife.item.AlchemyFlaskItem;
+import com.stofiiis.highlife.item.MysticHerbBundleItem;
+import com.stofiiis.highlife.item.MysticHerbSeedsItem;
+import com.stofiiis.highlife.item.DriedMysticHerbItem;
+import com.stofiiis.highlife.item.HerbRollItem;
+import com.stofiiis.highlife.item.InfusionWandItem;
+import com.stofiiis.highlife.item.InfusionItem;
 
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -22,23 +22,23 @@ public final class ModItems {
     public static final DeferredItem<BlockItem> DRYING_RACK = ITEMS.registerSimpleBlockItem("drying_rack", ModBlocks.DRYING_RACK);
     public static final DeferredItem<BlockItem> SEED_MIXER = ITEMS.registerSimpleBlockItem("seed_mixer", ModBlocks.SEED_MIXER);
 
-    public static final DeferredItem<CannabisSeedsItem> CANNABIS_SEEDS = ITEMS.registerItem("cannabis_seeds",
-            properties -> new CannabisSeedsItem(ModBlocks.CANNABIS_CROP.get(), properties));
+    public static final DeferredItem<MysticHerbSeedsItem> MYSTIC_HERB_SEEDS = ITEMS.registerItem("mystic_herb_seeds",
+            properties -> new MysticHerbSeedsItem(ModBlocks.MYSTIC_HERB_CROP.get(), properties));
 
-    public static final DeferredItem<CannabisBudItem> CANNABIS_BUD = ITEMS.registerItem("cannabis_bud", CannabisBudItem::new);
-    public static final DeferredItem<DriedCannabisBudItem> DRIED_CANNABIS_BUD = ITEMS.registerItem("dried_cannabis_bud", DriedCannabisBudItem::new);
+    public static final DeferredItem<MysticHerbBundleItem> MYSTIC_HERB_BUNDLE = ITEMS.registerItem("mystic_herb_bundle", MysticHerbBundleItem::new);
+    public static final DeferredItem<DriedMysticHerbItem> DRIED_MYSTIC_HERB = ITEMS.registerItem("dried_mystic_herb", DriedMysticHerbItem::new);
     public static final DeferredItem<Item> ROLLING_PAPER = ITEMS.registerSimpleItem("rolling_paper");
-    public static final DeferredItem<JointItem> JOINT = ITEMS.registerItem("joint",
-            properties -> new JointItem(properties.stacksTo(1), 1.0F, 7200, 2600, 1800, 6));
+    public static final DeferredItem<HerbRollItem> HERB_ROLL = ITEMS.registerItem("herb_roll",
+            properties -> new HerbRollItem(properties.stacksTo(1), 1.0F, 7200, 2600, 1800, 6));
 
-    public static final DeferredItem<PipeItem> PIPE = ITEMS.registerItem("pipe",
-            properties -> new PipeItem(properties.stacksTo(1), 1.35F, 8600, 3200, 2600, 8));
+    public static final DeferredItem<InfusionWandItem> INFUSION_WAND = ITEMS.registerItem("infusion_wand",
+            properties -> new InfusionWandItem(properties.stacksTo(1), 1.35F, 8600, 3200, 2600, 8));
 
-    public static final DeferredItem<BongItem> BONG = ITEMS.registerItem("bong",
-            properties -> new BongItem(properties.stacksTo(1).durability(41), 1.7F, 9800, 4200, 3400, 10));
+    public static final DeferredItem<AlchemyFlaskItem> ALCHEMY_FLASK = ITEMS.registerItem("alchemy_flask",
+            properties -> new AlchemyFlaskItem(properties.stacksTo(1).durability(41), 1.7F, 9800, 4200, 3400, 10));
 
-    public static final DeferredItem<SmokeItem> WEED_BROWNIE = ITEMS.registerItem("weed_brownie",
-            properties -> new SmokeItem(properties.stacksTo(64).food(new FoodProperties.Builder()
+    public static final DeferredItem<InfusionItem> HERB_COOKIE = ITEMS.registerItem("herb_cookie",
+            properties -> new InfusionItem(properties.stacksTo(64).food(new FoodProperties.Builder()
                     .alwaysEdible()
                     .nutrition(6)
                     .saturationModifier(0.6F)

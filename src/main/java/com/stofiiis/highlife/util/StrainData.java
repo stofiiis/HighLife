@@ -20,7 +20,7 @@ public record StrainData(Strain strain, float quality) {
     private static final String TAG_STRAIN = HighLifeMod.MODID + ".strain";
     private static final String TAG_QUALITY = HighLifeMod.MODID + ".quality";
 
-    public static final StrainData DEFAULT = new StrainData(Strain.OG_KUSH, 1.0F);
+    public static final StrainData DEFAULT = new StrainData(Strain.VERDANT_BLOOM, 1.0F);
 
     public static final Codec<StrainData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Strain.CODEC.fieldOf("strain").forGetter(StrainData::strain),
@@ -28,7 +28,7 @@ public record StrainData(Strain strain, float quality) {
             .apply(instance, StrainData::new));
 
     public StrainData {
-        strain = Objects.requireNonNullElse(strain, Strain.OG_KUSH);
+        strain = Objects.requireNonNullElse(strain, Strain.VERDANT_BLOOM);
         quality = Mth.clamp(quality, 0.60F, 1.35F);
     }
 
@@ -179,11 +179,11 @@ public record StrainData(Strain strain, float quality) {
     }
 
     public enum Strain implements StringRepresentable {
-        OG_KUSH("og_kush", 0x4CAF50, 1.08F, 1.03F, 1.00F),
-        SOUR_DIESEL("sour_diesel", 0xE2C84D, 1.16F, 0.93F, 1.14F),
-        BLUE_DREAM("blue_dream", 0x5EA8FF, 1.00F, 1.14F, 0.90F),
-        WHITE_WIDOW("white_widow", 0xEAEAEA, 1.12F, 1.00F, 1.05F),
-        NORTHERN_LIGHTS("northern_lights", 0xA66CFF, 0.96F, 1.20F, 0.84F);
+        VERDANT_BLOOM("verdant_bloom", 0x4CAF50, 1.08F, 1.03F, 1.00F),
+        GOLDEN_MIST("golden_mist", 0xE2C84D, 1.16F, 0.93F, 1.14F),
+        AZURE_GLOW("azure_glow", 0x5EA8FF, 1.00F, 1.14F, 0.90F),
+        SILVER_SPARK("silver_spark", 0xEAEAEA, 1.12F, 1.00F, 1.05F),
+        LUMEN_TRAIL("lumen_trail", 0xA66CFF, 0.96F, 1.20F, 0.84F);
 
         public static final Codec<Strain> CODEC = StringRepresentable.fromEnum(Strain::values);
 
@@ -213,7 +213,7 @@ public record StrainData(Strain strain, float quality) {
                     return strain;
                 }
             }
-            return OG_KUSH;
+            return VERDANT_BLOOM;
         }
     }
 }

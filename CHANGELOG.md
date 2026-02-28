@@ -13,9 +13,9 @@ All notable changes to this project are documented in this file.
 - Timed mixing with visual progress.
 - Result collection directly from the block.
 - Non-destructive mature crop harvesting (plant stays in farmland after harvest).
-- Pipe and bong control GUIs with loading workflow.
-- Joint multi-puff system.
-- Expanded advancement set for smoking, loading, hydration, and breeding progression.
+- Infusion wand and alchemy flask control GUIs with loading workflow.
+- Herb roll multi-charge system.
+- Expanded advancement set for infusion, loading, hydration, and breeding progression.
 
 ### Changed
 - Rebranded production name and namespace to `HighLife`.
@@ -23,13 +23,13 @@ All notable changes to this project are documented in this file.
 - `mod_id`: `highlife`
 - Display name: `HighLife`
 - Package namespace: `com.stofiiis.highlife`
-- Assets/data namespace moved from `weed` to `highlife`.
+- Assets/data namespace moved from `herb` to `highlife`.
 - Added bilingual CurseForge description markdown in project root.
 
 ### Fixed
 - Seed Mixer now gives the finished result immediately even when GUI stays open.
-- Pipe GUI alignment adjusted to match bong layout style.
-- Pipe slot/arrow layout centered and spacing polished.
+- Infusion wand GUI alignment adjusted to match alchemy flask layout style.
+- Infusion wand slot/arrow layout centered and spacing polished.
 
 ### Compatibility
 - Minecraft: `1.21.11`

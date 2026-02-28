@@ -1,0 +1,33 @@
+{
+  "parent": "highlife:drying_master",
+  "criteria": {
+    "has_herb_roll": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:herb_roll"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.prepare_roll.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:herb_roll"
+    },
+    "title": {
+      "translate": "advancement.highlife.prepare_roll.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_herb_roll"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

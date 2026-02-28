@@ -1,8 +1,8 @@
 package com.stofiiis.highlife.registry;
 
 import com.stofiiis.highlife.HighLifeMod;
-import com.stofiiis.highlife.menu.BongControlMenu;
-import com.stofiiis.highlife.menu.PipeControlMenu;
+import com.stofiiis.highlife.menu.AlchemyFlaskControlMenu;
+import com.stofiiis.highlife.menu.InfusionWandControlMenu;
 import com.stofiiis.highlife.menu.SeedMixerMenu;
 
 import net.minecraft.core.registries.Registries;
@@ -15,13 +15,13 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModMenus {
     private static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, HighLifeMod.MODID);
 
-    public static final DeferredHolder<MenuType<?>, MenuType<PipeControlMenu>> PIPE_CONTROL = MENUS.register(
-            "pipe_control",
-            () -> IMenuTypeExtension.create(PipeControlMenu::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<InfusionWandControlMenu>> INFUSION_WAND_CONTROL = MENUS.register(
+            "infusion_wand_control",
+            () -> IMenuTypeExtension.create(InfusionWandControlMenu::new));
 
-    public static final DeferredHolder<MenuType<?>, MenuType<BongControlMenu>> BONG_CONTROL = MENUS.register(
-            "bong_control",
-            () -> IMenuTypeExtension.create(BongControlMenu::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<AlchemyFlaskControlMenu>> ALCHEMY_FLASK_CONTROL = MENUS.register(
+            "alchemy_flask_control",
+            () -> IMenuTypeExtension.create(AlchemyFlaskControlMenu::new));
 
     public static final DeferredHolder<MenuType<?>, MenuType<SeedMixerMenu>> SEED_MIXER = MENUS.register(
             "seed_mixer",

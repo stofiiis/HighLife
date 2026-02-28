@@ -1,5 +1,5 @@
 {
-  "parent": "highlife:first_smoke",
+  "parent": "highlife:first_infusion",
   "criteria": {
     "peace_active": {
       "trigger": "minecraft:impossible"
@@ -11,7 +11,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "highlife:weed_brownie"
+      "id": "highlife:herb_cookie"
     },
     "title": {
       "translate": "advancement.highlife.zen_walk.title"

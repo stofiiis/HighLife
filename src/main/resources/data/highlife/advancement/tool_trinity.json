@@ -1,0 +1,30 @@
+{
+  "parent": "highlife:alchemy_flask_engineer",
+  "criteria": {
+    "all_three_tools": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.tool_trinity.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "highlife:alchemy_flask"
+    },
+    "title": {
+      "translate": "advancement.highlife.tool_trinity.title"
+    }
+  },
+  "requirements": [
+    [
+      "all_three_tools"
+    ]
+  ],
+  "rewards": {
+    "experience": 125
+  },
+  "sends_telemetry_event": true
+}

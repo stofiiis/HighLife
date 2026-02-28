@@ -1,7 +1,7 @@
 package com.stofiiis.highlife.registry;
 
 import com.stofiiis.highlife.HighLifeMod;
-import com.stofiiis.highlife.block.CannabisCropBlock;
+import com.stofiiis.highlife.block.MysticHerbCropBlock;
 import com.stofiiis.highlife.block.DryingRackBlock;
 import com.stofiiis.highlife.block.SeedMixerBlock;
 
@@ -17,8 +17,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModBlocks {
     private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(HighLifeMod.MODID);
 
-    public static final DeferredBlock<CannabisCropBlock> CANNABIS_CROP = BLOCKS.registerBlock("cannabis_crop",
-            CannabisCropBlock::new,
+    public static final DeferredBlock<MysticHerbCropBlock> MYSTIC_HERB_CROP = BLOCKS.registerBlock("mystic_herb_crop",
+            MysticHerbCropBlock::new,
             properties -> properties.ofFullCopy(Blocks.BEETROOTS)
                     .noCollision()
                     .instabreak()

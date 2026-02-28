@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "highlife:dried_cannabis_bud"
+            "items": "highlife:dried_mystic_herb"
           }
         ]
       },
@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "highlife:dried_cannabis_bud"
+      "id": "highlife:dried_mystic_herb"
     },
     "title": {
       "translate": "advancement.highlife.drying_master.title"

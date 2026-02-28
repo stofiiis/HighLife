@@ -9,28 +9,28 @@ import net.neoforged.fml.common.asm.enumextension.EnumProxy;
 import net.neoforged.neoforge.client.IArmPoseTransformer;
 
 public final class ModArmPoses {
-    public static final EnumProxy<HumanoidModel.ArmPose> JOINT_PUFF = new EnumProxy<>(
+    public static final EnumProxy<HumanoidModel.ArmPose> ROLL_CAST = new EnumProxy<>(
             HumanoidModel.ArmPose.class,
             false,
             true,
-            (IArmPoseTransformer) (model, state, arm) -> applySmokePose(model, state, arm, 0.95F, 0.32F));
+            (IArmPoseTransformer) (model, state, arm) -> applyInfusionPose(model, state, arm, 0.95F, 0.32F));
 
-    public static final EnumProxy<HumanoidModel.ArmPose> PIPE_PUFF = new EnumProxy<>(
+    public static final EnumProxy<HumanoidModel.ArmPose> WAND_CHARGE = new EnumProxy<>(
             HumanoidModel.ArmPose.class,
             false,
             true,
-            (IArmPoseTransformer) (model, state, arm) -> applySmokePose(model, state, arm, 1.18F, 0.38F));
+            (IArmPoseTransformer) (model, state, arm) -> applyInfusionPose(model, state, arm, 1.18F, 0.38F));
 
-    public static final EnumProxy<HumanoidModel.ArmPose> BONG_PUFF = new EnumProxy<>(
+    public static final EnumProxy<HumanoidModel.ArmPose> FLASK_BUBBLE = new EnumProxy<>(
             HumanoidModel.ArmPose.class,
             false,
             true,
-            (IArmPoseTransformer) (model, state, arm) -> applySmokePose(model, state, arm, 1.35F, 0.46F));
+            (IArmPoseTransformer) (model, state, arm) -> applyInfusionPose(model, state, arm, 1.35F, 0.46F));
 
     private ModArmPoses() {
     }
 
-    private static void applySmokePose(HumanoidModel<?> model, HumanoidRenderState state, HumanoidArm arm, float pullStrength, float torsoLean) {
+    private static void applyInfusionPose(HumanoidModel<?> model, HumanoidRenderState state, HumanoidArm arm, float pullStrength, float torsoLean) {
         ModelPart activeArm = model.getArm(arm);
         ModelPart offArm = model.getArm(arm.getOpposite());
 

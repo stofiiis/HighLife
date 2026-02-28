@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:cobblestone",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "CC ",
+    "CS ",
+    "  S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "highlife:infusion_wand"
+  }
+}

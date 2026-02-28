@@ -1,0 +1,33 @@
+{
+  "parent": "highlife:first_infusion",
+  "criteria": {
+    "has_infusion_wand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:infusion_wand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.wand_apprentice.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:infusion_wand"
+    },
+    "title": {
+      "translate": "advancement.highlife.wand_apprentice.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_infusion_wand"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

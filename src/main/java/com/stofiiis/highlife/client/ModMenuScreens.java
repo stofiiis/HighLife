@@ -9,8 +9,8 @@ public final class ModMenuScreens {
     }
 
     public static void onRegisterMenuScreens(RegisterMenuScreensEvent event) {
-        event.register(ModMenus.PIPE_CONTROL.get(), PipeControlScreen::new);
-        event.register(ModMenus.BONG_CONTROL.get(), BongControlScreen::new);
+        event.register(ModMenus.INFUSION_WAND_CONTROL.get(), InfusionWandControlScreen::new);
+        event.register(ModMenus.ALCHEMY_FLASK_CONTROL.get(), AlchemyFlaskControlScreen::new);
         event.register(ModMenus.SEED_MIXER.get(), SeedMixerScreen::new);
     }
 }

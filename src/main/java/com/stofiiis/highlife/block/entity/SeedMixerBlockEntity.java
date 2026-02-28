@@ -140,8 +140,8 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
     }
 
     private boolean canStartMix() {
-        return this.items.get(SLOT_SEED_A).is(ModItems.CANNABIS_SEEDS.get())
-                && this.items.get(SLOT_SEED_B).is(ModItems.CANNABIS_SEEDS.get())
+        return this.items.get(SLOT_SEED_A).is(ModItems.MYSTIC_HERB_SEEDS.get())
+                && this.items.get(SLOT_SEED_B).is(ModItems.MYSTIC_HERB_SEEDS.get())
                 && this.items.get(SLOT_DIRT).is(Items.DIRT);
     }
 
@@ -161,7 +161,7 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
                 strainA == strainB,
                 level.getRandom());
 
-        ItemStack resultSeed = new ItemStack(ModItems.CANNABIS_SEEDS.get());
+        ItemStack resultSeed = new ItemStack(ModItems.MYSTIC_HERB_SEEDS.get());
         SeedCategoryData.set(resultSeed, childCategory);
         StrainData.set(resultSeed, SeedCategoryData.stackableSeedData(childCategory, childStrain));
         this.pendingResult = resultSeed;
@@ -282,7 +282,7 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
     @Override
     public boolean canPlaceItem(int slot, ItemStack stack) {
         return switch (slot) {
-            case SLOT_SEED_A, SLOT_SEED_B -> stack.is(ModItems.CANNABIS_SEEDS.get());
+            case SLOT_SEED_A, SLOT_SEED_B -> stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
             case SLOT_DIRT -> stack.is(Items.DIRT);
             case SLOT_BONEMEAL -> stack.is(Items.BONE_MEAL);
             default -> false;

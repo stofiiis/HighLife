@@ -16,21 +16,21 @@ public final class HighLifeConfig {
     private static final ModConfigSpec.BooleanValue DRYING_RACK_PARTICLES;
 
     private static final ModConfigSpec.DoubleValue DURATION_MULTIPLIER;
-    private static final ModConfigSpec.DoubleValue COTTONMOUTH_CHANCE_MULTIPLIER;
-    private static final ModConfigSpec.DoubleValue FOG_CHANCE_MULTIPLIER;
+    private static final ModConfigSpec.DoubleValue THIRST_CHANCE_MULTIPLIER;
+    private static final ModConfigSpec.DoubleValue HAZE_CHANCE_MULTIPLIER;
     private static final ModConfigSpec.IntValue PEACE_DURATION_TICKS;
-    private static final ModConfigSpec.BooleanValue SMOKE_PARTICLES;
-    private static final ModConfigSpec.BooleanValue SMOKE_SOUNDS;
+    private static final ModConfigSpec.BooleanValue INFUSION_PARTICLES;
+    private static final ModConfigSpec.BooleanValue INFUSION_SOUNDS;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
         builder.push("drops");
         ENABLE_SEED_DROPS = builder
-                .comment("If false, grass and ferns will not drop cannabis seeds.")
+                .comment("If false, grass and ferns will not drop mystic_herb seeds.")
                 .define("enableSeedDrops", true);
         SEED_DROP_CHANCE = builder
-                .comment("Chance for one cannabis seed drop when breaking grass-like plants.")
+                .comment("Chance for one mystic_herb seed drop when breaking grass-like plants.")
                 .defineInRange("seedDropChance", 0.18D, 0.0D, 1.0D);
         builder.pop();
 
@@ -45,31 +45,31 @@ public final class HighLifeConfig {
 
         builder.push("drying_rack");
         DRY_TIME_TICKS = builder
-                .comment("How many ticks drying one cannabis bud takes.")
+                .comment("How many ticks drying one mystic_herb bud takes.")
                 .defineInRange("dryTimeTicks", 1200, 20, 72000);
         DRYING_RACK_PARTICLES = builder
-                .comment("Show smoke particles while drying and on completion.")
+                .comment("Show visual particles while drying and on completion.")
                 .define("enableParticles", true);
         builder.pop();
 
-        builder.push("smoke");
+        builder.push("infusion");
         DURATION_MULTIPLIER = builder
-                .comment("Global multiplier for Relaxed/Cottonmouth/Fog duration.")
+                .comment("Global multiplier for Serenity/Thirst/Haze duration.")
                 .defineInRange("durationMultiplier", 1.0D, 0.1D, 4.0D);
-        COTTONMOUTH_CHANCE_MULTIPLIER = builder
-                .comment("Global multiplier for cottonmouth chance.")
-                .defineInRange("cottonmouthChanceMultiplier", 1.0D, 0.0D, 3.0D);
-        FOG_CHANCE_MULTIPLIER = builder
-                .comment("Global multiplier for fog chance.")
-                .defineInRange("fogChanceMultiplier", 1.0D, 0.0D, 3.0D);
+        THIRST_CHANCE_MULTIPLIER = builder
+                .comment("Global multiplier for thirst chance.")
+                .defineInRange("thirstChanceMultiplier", 1.0D, 0.0D, 3.0D);
+        HAZE_CHANCE_MULTIPLIER = builder
+                .comment("Global multiplier for haze chance.")
+                .defineInRange("hazeChanceMultiplier", 1.0D, 0.0D, 3.0D);
         PEACE_DURATION_TICKS = builder
-                .comment("How long Peace lasts after smoking (in ticks). 600 = 30 seconds.")
+                .comment("How long Peace lasts after infusion use (in ticks). 600 = 30 seconds.")
                 .defineInRange("peaceDurationTicks", 600, 0, 12000);
-        SMOKE_PARTICLES = builder
-                .comment("Spawn smoke particles when smoking items are used.")
+        INFUSION_PARTICLES = builder
+                .comment("Spawn visual particles when infusion items are used.")
                 .define("enableParticles", true);
-        SMOKE_SOUNDS = builder
-                .comment("Play smoking sound when smoking items are used.")
+        INFUSION_SOUNDS = builder
+                .comment("Play infusion sound when infusion items are used.")
                 .define("enableSounds", true);
         builder.pop();
 
@@ -107,23 +107,23 @@ public final class HighLifeConfig {
         return (float) Mth.clamp(DURATION_MULTIPLIER.get(), 0.1D, 4.0D);
     }
 
-    public static float getCottonmouthChanceMultiplier() {
-        return (float) Mth.clamp(COTTONMOUTH_CHANCE_MULTIPLIER.get(), 0.0D, 3.0D);
+    public static float getThirstChanceMultiplier() {
+        return (float) Mth.clamp(THIRST_CHANCE_MULTIPLIER.get(), 0.0D, 3.0D);
     }
 
-    public static float getFogChanceMultiplier() {
-        return (float) Mth.clamp(FOG_CHANCE_MULTIPLIER.get(), 0.0D, 3.0D);
+    public static float getHazeChanceMultiplier() {
+        return (float) Mth.clamp(HAZE_CHANCE_MULTIPLIER.get(), 0.0D, 3.0D);
     }
 
     public static int getPeaceDurationTicks() {
         return Math.max(0, PEACE_DURATION_TICKS.get());
     }
 
-    public static boolean isSmokeParticlesEnabled() {
-        return SMOKE_PARTICLES.get();
+    public static boolean isInfusionParticlesEnabled() {
+        return INFUSION_PARTICLES.get();
     }
 
-    public static boolean isSmokeSoundsEnabled() {
-        return SMOKE_SOUNDS.get();
+    public static boolean isInfusionSoundsEnabled() {
+        return INFUSION_SOUNDS.get();
     }
 }

@@ -12,7 +12,7 @@
     "frame": "goal",
     "icon": {
       "count": 1,
-      "id": "highlife:cannabis_seeds"
+      "id": "highlife:mystic_herb_seeds"
     },
     "title": {
       "translate": "advancement.highlife.first_cross.title"

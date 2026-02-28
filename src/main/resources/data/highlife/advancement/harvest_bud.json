@@ -1,11 +1,11 @@
 {
   "parent": "highlife:root",
   "criteria": {
-    "has_cannabis_bud": {
+    "has_mystic_herb_bundle": {
       "conditions": {
         "items": [
           {
-            "items": "highlife:cannabis_bud"
+            "items": "highlife:mystic_herb_bundle"
           }
         ]
       },
@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "highlife:cannabis_bud"
+      "id": "highlife:mystic_herb_bundle"
     },
     "title": {
       "translate": "advancement.highlife.harvest_bud.title"
@@ -26,7 +26,7 @@
   },
   "requirements": [
     [
-      "has_cannabis_bud"
+      "has_mystic_herb_bundle"
     ]
   ],
   "sends_telemetry_event": true

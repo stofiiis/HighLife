@@ -1,11 +1,11 @@
 {
-  "parent": "highlife:first_smoke",
+  "parent": "highlife:first_infusion",
   "criteria": {
     "has_brownie": {
       "conditions": {
         "items": [
           {
-            "items": "highlife:weed_brownie"
+            "items": "highlife:herb_cookie"
           }
         ]
       },
@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "highlife:weed_brownie"
+      "id": "highlife:herb_cookie"
     },
     "title": {
       "translate": "advancement.highlife.edible_vibes.title"

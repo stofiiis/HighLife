@@ -1,0 +1,30 @@
+{
+  "parent": "highlife:alchemy_flask_loader",
+  "criteria": {
+    "alchemy_flask_refilled": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.flask_hydration.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:water_bucket"
+    },
+    "title": {
+      "translate": "advancement.highlife.flask_hydration.title"
+    }
+  },
+  "requirements": [
+    [
+      "alchemy_flask_refilled"
+    ]
+  ],
+  "rewards": {
+    "experience": 80
+  },
+  "sends_telemetry_event": true
+}

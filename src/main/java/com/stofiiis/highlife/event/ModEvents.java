@@ -63,7 +63,7 @@ public final class ModEvents {
         Block block = event.getState().getBlock();
         boolean isGrassLike = block == Blocks.SHORT_GRASS || block == Blocks.TALL_GRASS || block == Blocks.FERN || block == Blocks.LARGE_FERN;
         if (isGrassLike && HighLifeConfig.areSeedDropsEnabled() && level.getRandom().nextFloat() < HighLifeConfig.getSeedDropChance()) {
-            ItemStack seedDrop = new ItemStack(ModItems.CANNABIS_SEEDS.get());
+            ItemStack seedDrop = new ItemStack(ModItems.MYSTIC_HERB_SEEDS.get());
             SeedCategoryData.SeedCategory category = SeedCategoryData.randomWildDrop(level.getRandom());
             StrainData.Strain strain = SeedCategoryData.randomStrain(level.getRandom());
             SeedCategoryData.set(seedDrop, category);
@@ -74,7 +74,7 @@ public final class ModEvents {
 
     @SubscribeEvent
     public static void onCropDrops(BlockDropsEvent event) {
-        if (!(event.getLevel() instanceof ServerLevel serverLevel) || !event.getState().is(ModBlocks.CANNABIS_CROP.get())) {
+        if (!(event.getLevel() instanceof ServerLevel serverLevel) || !event.getState().is(ModBlocks.MYSTIC_HERB_CROP.get())) {
             return;
         }
 
@@ -84,10 +84,10 @@ public final class ModEvents {
 
         for (ItemEntity drop : event.getDrops()) {
             ItemStack droppedStack = drop.getItem();
-            if (droppedStack.is(ModItems.CANNABIS_BUD.get())) {
+            if (droppedStack.is(ModItems.MYSTIC_HERB_BUNDLE.get())) {
                 StrainData budData = source.mutate(serverLevel.getRandom(), 0.08F).withQualityOffset(0.02F);
                 StrainData.set(droppedStack, budData);
-            } else if (droppedStack.is(ModItems.CANNABIS_SEEDS.get())) {
+            } else if (droppedStack.is(ModItems.MYSTIC_HERB_SEEDS.get())) {
                 StrainData seedData = source.mutate(serverLevel.getRandom(), 0.16F);
                 SeedCategoryData.SeedCategory category = SeedCategoryData.fromQuality(seedData.quality());
                 SeedCategoryData.set(droppedStack, category);
@@ -99,16 +99,16 @@ public final class ModEvents {
     @SubscribeEvent
     public static void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
         ItemStack crafted = event.getCrafting();
-        if (crafted.is(ModItems.JOINT.get())) {
-            onJointCrafted(event, crafted);
+        if (crafted.is(ModItems.HERB_ROLL.get())) {
+            onHerbRollCrafted(event, crafted);
         }
     }
 
-    private static void onJointCrafted(PlayerEvent.ItemCraftedEvent event, ItemStack crafted) {
+    private static void onHerbRollCrafted(PlayerEvent.ItemCraftedEvent event, ItemStack crafted) {
         StrainData fromBud = null;
         for (int slot = 0; slot < event.getInventory().getContainerSize(); slot++) {
             ItemStack ingredient = event.getInventory().getItem(slot);
-            if (ingredient.is(ModItems.DRIED_CANNABIS_BUD.get())) {
+            if (ingredient.is(ModItems.DRIED_MYSTIC_HERB.get())) {
                 fromBud = StrainData.getOrCreate(ingredient, event.getEntity().getRandom());
                 break;
             }
@@ -182,7 +182,7 @@ public final class ModEvents {
                 continue;
             }
 
-            if (stack.is(ModItems.CANNABIS_SEEDS.get())) {
+            if (stack.is(ModItems.MYSTIC_HERB_SEEDS.get())) {
                 migrateSeedToCategory(stack, player);
                 continue;
             }
@@ -209,8 +209,8 @@ public final class ModEvents {
     }
 
     private static boolean isStrainTrackedItem(Item item) {
-        return item == ModItems.CANNABIS_BUD.get()
-                || item == ModItems.DRIED_CANNABIS_BUD.get()
-                || item == ModItems.JOINT.get();
+        return item == ModItems.MYSTIC_HERB_BUNDLE.get()
+                || item == ModItems.DRIED_MYSTIC_HERB.get()
+                || item == ModItems.HERB_ROLL.get();
     }
 }

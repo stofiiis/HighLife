@@ -1,0 +1,37 @@
+{
+  "parent": "highlife:infusion_wand_apprentice",
+  "criteria": {
+    "has_alchemy_flask": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:alchemy_flask"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.flask_engineer.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "highlife:alchemy_flask"
+    },
+    "title": {
+      "translate": "advancement.highlife.flask_engineer.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_alchemy_flask"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": true
+}

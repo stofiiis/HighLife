@@ -1,0 +1,26 @@
+{
+  "parent": "highlife:infusion_wand_apprentice",
+  "criteria": {
+    "infusion_wand_loaded": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.wand_loader.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:infusion_wand"
+    },
+    "title": {
+      "translate": "advancement.highlife.wand_loader.title"
+    }
+  },
+  "requirements": [
+    [
+      "infusion_wand_loaded"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

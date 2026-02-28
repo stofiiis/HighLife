@@ -37,15 +37,15 @@ public class DryingRackBlockEntity extends BlockEntity {
     }
 
     public boolean canInsert(ItemStack stack) {
-        return this.storedItem.isEmpty() && stack.is(ModItems.CANNABIS_BUD.get());
+        return this.storedItem.isEmpty() && stack.is(ModItems.MYSTIC_HERB_BUNDLE.get());
     }
 
     public boolean isDryingComplete() {
-        return this.storedItem.is(ModItems.DRIED_CANNABIS_BUD.get());
+        return this.storedItem.is(ModItems.DRIED_MYSTIC_HERB.get());
     }
 
     public boolean isDrying() {
-        return this.storedItem.is(ModItems.CANNABIS_BUD.get());
+        return this.storedItem.is(ModItems.MYSTIC_HERB_BUNDLE.get());
     }
 
     public int getDryTimeTotal() {
@@ -98,13 +98,13 @@ public class DryingRackBlockEntity extends BlockEntity {
             return;
         }
 
-        if (!blockEntity.storedItem.is(ModItems.CANNABIS_BUD.get())) {
+        if (!blockEntity.storedItem.is(ModItems.MYSTIC_HERB_BUNDLE.get())) {
             return;
         }
 
         blockEntity.dryTime++;
         if (blockEntity.dryTime >= dryTimeTotal) {
-            ItemStack driedStack = new ItemStack(ModItems.DRIED_CANNABIS_BUD.get(), blockEntity.storedItem.getCount());
+            ItemStack driedStack = new ItemStack(ModItems.DRIED_MYSTIC_HERB.get(), blockEntity.storedItem.getCount());
             StrainData source = StrainData.get(blockEntity.storedItem).orElseGet(() -> StrainData.random(level.getRandom()));
             StrainData.set(driedStack, source.withQualityOffset(0.04F));
             blockEntity.storedItem = driedStack;

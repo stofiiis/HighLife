@@ -1,10 +1,10 @@
 {
   "criteria": {
-    "has_cannabis_seeds": {
+    "has_mystic_herb_seeds": {
       "conditions": {
         "items": [
           {
-            "items": "highlife:cannabis_seeds"
+            "items": "highlife:mystic_herb_seeds"
           }
         ]
       },
@@ -19,7 +19,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "highlife:cannabis_seeds"
+      "id": "highlife:mystic_herb_seeds"
     },
     "show_toast": true,
     "title": {
@@ -28,7 +28,7 @@
   },
   "requirements": [
     [
-      "has_cannabis_seeds"
+      "has_mystic_herb_seeds"
     ]
   ],
   "sends_telemetry_event": true

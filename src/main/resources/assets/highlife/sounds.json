@@ -1,24 +1,24 @@
 {
-  "joint_puff": {
+  "roll_cast": {
     "sounds": [
       {
-        "name": "highlife:joint_puff",
+        "name": "highlife:herb_roll_puff",
         "volume": 0.85
       }
     ]
   },
-  "pipe_puff": {
+  "wand_charge": {
     "sounds": [
       {
-        "name": "highlife:pipe_puff",
+        "name": "highlife:infusion_wand_puff",
         "volume": 0.95
       }
     ]
   },
-  "bong_puff": {
+  "flask_bubble": {
     "sounds": [
       {
-        "name": "highlife:bong_puff",
+        "name": "highlife:alchemy_flask_puff",
         "volume": 1.1
       }
     ]

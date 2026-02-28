@@ -13,21 +13,21 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModCreativeTabs {
     private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HighLifeMod.MODID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WEED_TAB = CREATIVE_TABS.register("highlife_tab",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> HIGHLIFE_TAB = CREATIVE_TABS.register("highlife_tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.highlife"))
                     .withTabsBefore(CreativeModeTabs.FOOD_AND_DRINKS)
-                    .icon(() -> ModItems.JOINT.get().getDefaultInstance())
+                    .icon(() -> ModItems.HERB_ROLL.get().getDefaultInstance())
                     .displayItems((params, output) -> {
-                        output.accept(ModItems.CANNABIS_SEEDS.get());
-                        output.accept(ModItems.CANNABIS_BUD.get());
-                        output.accept(ModItems.DRIED_CANNABIS_BUD.get());
+                        output.accept(ModItems.MYSTIC_HERB_SEEDS.get());
+                        output.accept(ModItems.MYSTIC_HERB_BUNDLE.get());
+                        output.accept(ModItems.DRIED_MYSTIC_HERB.get());
                         output.accept(ModItems.SEED_MIXER.get());
                         output.accept(ModItems.ROLLING_PAPER.get());
-                        output.accept(ModItems.JOINT.get());
-                        output.accept(ModItems.PIPE.get());
-                        output.accept(ModItems.BONG.get());
-                        output.accept(ModItems.WEED_BROWNIE.get());
+                        output.accept(ModItems.HERB_ROLL.get());
+                        output.accept(ModItems.INFUSION_WAND.get());
+                        output.accept(ModItems.ALCHEMY_FLASK.get());
+                        output.accept(ModItems.HERB_COOKIE.get());
                         output.accept(ModItems.DRYING_RACK.get());
                     })
                     .build());

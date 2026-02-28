@@ -39,8 +39,8 @@ public final class PlayerAnimationEvents {
             ItemStack usedStack = state.useItemHand == net.minecraft.world.InteractionHand.MAIN_HAND
                     ? state.getUseItemStackForArm(state.mainArm)
                     : state.getUseItemStackForArm(state.mainArm.getOpposite());
-            if (isSmokeItem(usedStack)) {
-                applySmokingAnimation(event, state);
+            if (isInfusionItem(usedStack)) {
+                applyInfusionAnimation(event, state);
                 return;
             }
         }
@@ -50,7 +50,7 @@ public final class PlayerAnimationEvents {
         }
     }
 
-    private static void applySmokingAnimation(RenderPlayerEvent.Pre<?> event, AvatarRenderState state) {
+    private static void applyInfusionAnimation(RenderPlayerEvent.Pre<?> event, AvatarRenderState state) {
         float age = state.ageInTicks + event.getPartialTick();
         float useTicks = state.ticksUsingItem;
         float inhaleProgress = Mth.clamp(useTicks / 8.0F, 0.0F, 1.0F);
@@ -80,7 +80,7 @@ public final class PlayerAnimationEvents {
         state.leftArmPose = net.minecraft.client.model.HumanoidModel.ArmPose.EMPTY;
     }
 
-    private static boolean isSmokeItem(ItemStack stack) {
-        return stack.is(ModItems.JOINT.get()) || stack.is(ModItems.PIPE.get()) || stack.is(ModItems.BONG.get());
+    private static boolean isInfusionItem(ItemStack stack) {
+        return stack.is(ModItems.HERB_ROLL.get()) || stack.is(ModItems.INFUSION_WAND.get()) || stack.is(ModItems.ALCHEMY_FLASK.get());
     }
 }

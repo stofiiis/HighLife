@@ -3,8 +3,8 @@ package com.stofiiis.highlife.command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.stofiiis.highlife.block.entity.DryingRackBlockEntity;
-import com.stofiiis.highlife.item.BongItem;
-import com.stofiiis.highlife.item.PipeItem;
+import com.stofiiis.highlife.item.AlchemyFlaskItem;
+import com.stofiiis.highlife.item.InfusionWandItem;
 import com.stofiiis.highlife.registry.ModEffects;
 import com.stofiiis.highlife.registry.ModItems;
 import com.stofiiis.highlife.util.StrainData;
@@ -36,24 +36,24 @@ public final class HighLifeDebugCommand {
         ServerPlayer player = source.getPlayerOrException();
         int tolerance = ToleranceData.get(player);
 
-        MobEffectInstance relaxed = player.getEffect(ModEffects.RELAXED);
-        MobEffectInstance cottonmouth = player.getEffect(ModEffects.COTTONMOUTH);
-        MobEffectInstance fog = player.getEffect(ModEffects.FOG);
+        MobEffectInstance serenity = player.getEffect(ModEffects.RELAXED);
+        MobEffectInstance thirst = player.getEffect(ModEffects.COTTONMOUTH);
+        MobEffectInstance haze = player.getEffect(ModEffects.FOG);
         MobEffectInstance peace = player.getEffect(ModEffects.PEACE);
 
         ItemStack mainHand = player.getMainHandItem();
-        final String bongInfo;
-        if (mainHand.is(ModItems.BONG.get())) {
+        final String alchemy_flaskInfo;
+        if (mainHand.is(ModItems.ALCHEMY_FLASK.get())) {
             int maxCharge = Math.max(1, mainHand.getMaxDamage() - 1);
             int used = Math.min(maxCharge, mainHand.getDamageValue());
             int left = maxCharge - used;
-            String loadedStrain = BongItem.getLoadedStrain(mainHand).map(data -> data.strain().getSerializedName()).orElse("none");
-            bongInfo = " | bong_water=" + left + "/" + maxCharge + " | bong_loaded_strain=" + loadedStrain;
-        } else if (mainHand.is(ModItems.PIPE.get())) {
-            String loadedStrain = PipeItem.getLoadedStrain(mainHand).map(data -> data.strain().getSerializedName()).orElse("none");
-            bongInfo = " | pipe_loaded=" + PipeItem.isLoaded(mainHand) + " | pipe_loaded_strain=" + loadedStrain;
+            String loadedStrain = AlchemyFlaskItem.getLoadedStrain(mainHand).map(data -> data.strain().getSerializedName()).orElse("none");
+            alchemy_flaskInfo = " | alchemy_flask_water=" + left + "/" + maxCharge + " | alchemy_flask_loaded_strain=" + loadedStrain;
+        } else if (mainHand.is(ModItems.INFUSION_WAND.get())) {
+            String loadedStrain = InfusionWandItem.getLoadedStrain(mainHand).map(data -> data.strain().getSerializedName()).orElse("none");
+            alchemy_flaskInfo = " | infusion_wand_loaded=" + InfusionWandItem.isLoaded(mainHand) + " | infusion_wand_loaded_strain=" + loadedStrain;
         } else {
-            bongInfo = "";
+            alchemy_flaskInfo = "";
         }
 
         String heldStrain = StrainData.get(mainHand)
@@ -62,12 +62,12 @@ public final class HighLifeDebugCommand {
 
         source.sendSuccess(
                 () -> Component.literal("highlife debug | tolerance=" + tolerance
-                        + " | relaxed=" + formatEffect(relaxed)
-                        + " | cottonmouth=" + formatEffect(cottonmouth)
-                        + " | fog=" + formatEffect(fog)
+                        + " | serenity=" + formatEffect(serenity)
+                        + " | thirst=" + formatEffect(thirst)
+                        + " | haze=" + formatEffect(haze)
                         + " | peace=" + formatEffect(peace)
                         + " | held_strain=" + heldStrain
-                        + bongInfo),
+                        + alchemy_flaskInfo),
                 false);
         return 1;
     }

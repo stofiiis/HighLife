@@ -87,7 +87,7 @@ public class DryingRackBlock extends BaseEntityBlock {
 
     private static InteractionResult handleRackInteraction(ItemStack heldStack, Player player, DryingRackBlockEntity rack) {
         if (rack.isEmpty()) {
-            if (!heldStack.is(ModItems.CANNABIS_BUD.get())) {
+            if (!heldStack.is(ModItems.MYSTIC_HERB_BUNDLE.get())) {
                 return InteractionResult.PASS;
             }
 

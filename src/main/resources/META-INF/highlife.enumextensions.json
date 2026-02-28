@@ -2,29 +2,29 @@
   "entries": [
     {
       "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
-      "name": "highlife_joint_puff",
+      "name": "highlife_roll_cast",
       "constructor": "(ZZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
       "parameters": {
         "class": "com/stofiiis/highlife/client/ModArmPoses",
-        "field": "JOINT_PUFF"
+        "field": "ROLL_CAST"
       }
     },
     {
       "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
-      "name": "highlife_pipe_puff",
+      "name": "highlife_wand_charge",
       "constructor": "(ZZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
       "parameters": {
         "class": "com/stofiiis/highlife/client/ModArmPoses",
-        "field": "PIPE_PUFF"
+        "field": "WAND_CHARGE"
       }
     },
     {
       "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
-      "name": "highlife_bong_puff",
+      "name": "highlife_flask_bubble",
       "constructor": "(ZZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
       "parameters": {
         "class": "com/stofiiis/highlife/client/ModArmPoses",
-        "field": "BONG_PUFF"
+        "field": "FLASK_BUBBLE"
       }
     }
   ]

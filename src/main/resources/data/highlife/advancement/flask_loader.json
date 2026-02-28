@@ -1,0 +1,26 @@
+{
+  "parent": "highlife:alchemy_flask_engineer",
+  "criteria": {
+    "alchemy_flask_loaded": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.flask_loader.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "highlife:alchemy_flask"
+    },
+    "title": {
+      "translate": "advancement.highlife.flask_loader.title"
+    }
+  },
+  "requirements": [
+    [
+      "alchemy_flask_loaded"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
