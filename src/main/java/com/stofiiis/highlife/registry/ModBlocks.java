@@ -36,7 +36,8 @@ public final class ModBlocks {
             SeedMixerBlock::new,
             properties -> properties.mapColor(MapColor.STONE)
                     .strength(2.0F)
-                    .sound(SoundType.STONE));
+                    .sound(SoundType.STONE)
+                    .noOcclusion());
 
     private ModBlocks() {
     }

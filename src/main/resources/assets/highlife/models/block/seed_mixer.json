@@ -1,6 +1,403 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "highlife:block/seed_mixer"
-  }
+    "textures":  {
+                     "particle":  "highlife:block/seed_mixer",
+                     "base":  "highlife:block/seed_mixer",
+                     "bowl":  "highlife:block/seed_mixer_bowl",
+                     "inner":  "highlife:block/seed_mixer_inner",
+                     "pestle":  "highlife:block/seed_mixer_pestle"
+                 },
+    "credit":  "stofiiis",
+    "elements":  [
+                     {
+                         "from":  [
+                                      1,
+                                      0,
+                                      1
+                                  ],
+                         "to":  [
+                                    15,
+                                    3,
+                                    15
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#base"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#base"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#base"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#base"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#base"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#base"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      2,
+                                      3,
+                                      2
+                                  ],
+                         "to":  [
+                                    14,
+                                    5,
+                                    14
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#base"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#base"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#base"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#base"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#base"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#base"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      5,
+                                      5,
+                                      5
+                                  ],
+                         "to":  [
+                                    11,
+                                    6,
+                                    11
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#inner"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#inner"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#inner"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#inner"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#inner"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#inner"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      3,
+                                      5,
+                                      3
+                                  ],
+                         "to":  [
+                                    13,
+                                    9,
+                                    5
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#bowl"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#bowl"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      3,
+                                      5,
+                                      11
+                                  ],
+                         "to":  [
+                                    13,
+                                    9,
+                                    13
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#bowl"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#bowl"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      3,
+                                      5,
+                                      5
+                                  ],
+                         "to":  [
+                                    5,
+                                    9,
+                                    11
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#bowl"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#bowl"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      11,
+                                      5,
+                                      5
+                                  ],
+                         "to":  [
+                                    13,
+                                    9,
+                                    11
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#bowl"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#bowl"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#bowl"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#bowl"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      7,
+                                      8,
+                                      7
+                                  ],
+                         "to":  [
+                                    9,
+                                    15,
+                                    9
+                                ],
+                         "rotation":  {
+                                          "origin":  [
+                                                         8,
+                                                         8,
+                                                         8
+                                                     ],
+                                          "axis":  "z",
+                                          "angle":  22.5,
+                                          "rescale":  true
+                                      },
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#pestle"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#pestle"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#pestle"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#pestle"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#pestle"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#pestle"
+                                                }
+                                   }
+                     },
+                     {
+                         "from":  [
+                                      7,
+                                      1,
+                                      0.5
+                                  ],
+                         "to":  [
+                                    9,
+                                    3,
+                                    1
+                                ],
+                         "faces":  {
+                                       "north":  {
+                                                     "texture":  "#inner"
+                                                 },
+                                       "east":  {
+                                                    "texture":  "#inner"
+                                                },
+                                       "south":  {
+                                                     "texture":  "#inner"
+                                                 },
+                                       "west":  {
+                                                    "texture":  "#inner"
+                                                },
+                                       "up":  {
+                                                  "texture":  "#inner"
+                                              },
+                                       "down":  {
+                                                    "texture":  "#inner"
+                                                }
+                                   }
+                     }
+                 ],
+    "display":  {
+                    "thirdperson_righthand":  {
+                                                  "rotation":  [
+                                                                   75,
+                                                                   45,
+                                                                   0
+                                                               ],
+                                                  "translation":  [
+                                                                      0,
+                                                                      2.5,
+                                                                      0
+                                                                  ],
+                                                  "scale":  [
+                                                                0.375,
+                                                                0.375,
+                                                                0.375
+                                                            ]
+                                              },
+                    "thirdperson_lefthand":  {
+                                                 "rotation":  [
+                                                                  75,
+                                                                  45,
+                                                                  0
+                                                              ],
+                                                 "translation":  [
+                                                                     0,
+                                                                     2.5,
+                                                                     0
+                                                                 ],
+                                                 "scale":  [
+                                                               0.375,
+                                                               0.375,
+                                                               0.375
+                                                           ]
+                                             },
+                    "firstperson_righthand":  {
+                                                  "rotation":  [
+                                                                   0,
+                                                                   45,
+                                                                   0
+                                                               ],
+                                                  "scale":  [
+                                                                0.4,
+                                                                0.4,
+                                                                0.4
+                                                            ]
+                                              },
+                    "firstperson_lefthand":  {
+                                                 "rotation":  [
+                                                                  0,
+                                                                  225,
+                                                                  0
+                                                              ],
+                                                 "scale":  [
+                                                               0.4,
+                                                               0.4,
+                                                               0.4
+                                                           ]
+                                             },
+                    "gui":  {
+                                "rotation":  [
+                                                 30,
+                                                 225,
+                                                 0
+                                             ],
+                                "scale":  [
+                                              0.72,
+                                              0.72,
+                                              0.72
+                                          ]
+                            },
+                    "ground":  {
+                                   "translation":  [
+                                                       0,
+                                                       3,
+                                                       0
+                                                   ],
+                                   "scale":  [
+                                                 0.25,
+                                                 0.25,
+                                                 0.25
+                                             ]
+                               },
+                    "fixed":  {
+                                  "scale":  [
+                                                0.5,
+                                                0.5,
+                                                0.5
+                                            ]
+                              }
+                },
+    "render_type":  "cutout",
+    "ambientocclusion":  true
 }

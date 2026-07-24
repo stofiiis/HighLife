@@ -7,10 +7,16 @@ All notable changes to this project are documented in this file.
 ### Changed
 - Reworked seven core item textures into a consistent fantasy alchemy style.
 - Replaced legacy-looking herb and infusion icons with clearer, CurseForge-friendly silhouettes.
+- Rebuilt every custom block texture in the same fantasy alchemy palette.
+- Replaced the flat Seed Mixer and Drying Rack cubes with custom 3D models.
+- Updated all crop stages with rounded fantasy leaves and clearer growth progression.
+- Seed Mixer inventory rendering now uses the same 3D model as the placed block.
+- Block selection and collision shapes now follow the slimmer 3D models.
 
 ### Development
 - Added an archived texture concept sheet for future art direction.
 - Added a deterministic PowerShell generator for the final 16x16 item sprites.
+- Added deterministic generators for block textures and block models.
 
 ## [1.0.0] - 2026-02-27
 
