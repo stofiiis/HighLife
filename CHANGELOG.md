@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [Unreleased]
+
+### Changed
+- Reworked seven core item textures into a consistent fantasy alchemy style.
+- Replaced legacy-looking herb and infusion icons with clearer, CurseForge-friendly silhouettes.
+
+### Development
+- Added an archived texture concept sheet for future art direction.
+- Added a deterministic PowerShell generator for the final 16x16 item sprites.
+
 ## [1.0.0] - 2026-02-27
 
 ### Added

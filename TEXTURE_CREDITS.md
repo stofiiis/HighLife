@@ -2,10 +2,16 @@
 
 Author of the mod: **stofiiis**
 
+## HighLife V2 Item Set
+- Art direction and final 16x16 pixel sprites: **stofiiis**.
+- The source concept sheet is archived as `art_sources/highlife_texture_concept_v2.png`.
+- Final item textures are generated deterministically by `tools/generate_item_textures.ps1`.
+- Updated items: `alchemy_flask`, `dried_mystic_herb`, `herb_cookie`, `herb_roll`, `infusion_wand`, `mystic_herb_bundle`, and `mystic_herb_seeds`.
+
 ## OpenGameArt (CC0)
-- Leaf sprite used for `mystic_herb_bundle`, `dried_mystic_herb`, and crop stages.
+- Leaf sprite used for the crop stages.
   - Source: OpenGameArt leaf sprite pack (CC0)
-- Bottles sprite sheet used as the base for the `alchemy_flask` texture.
+- Bottles sprite sheet used as an early visual reference.
   - Source page: https://opengameart.org/content/bottles
   - Source file used: `bottles.png`
 
