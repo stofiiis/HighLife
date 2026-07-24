@@ -1,7 +1,6 @@
 package com.stofiiis.highlife.item;
 
 import com.stofiiis.highlife.menu.InfusionWandControlMenu;
-import com.stofiiis.highlife.registry.ModSounds;
 import com.stofiiis.highlife.util.AdvancementTracker;
 import com.stofiiis.highlife.util.StrainData;
 
@@ -38,7 +37,7 @@ public class InfusionWandItem extends InfusionItem {
 
     @Override
     protected SoundEvent getInfusionSound(ItemStack stack, Player player) {
-        return ModSounds.WAND_CHARGE.get();
+        return SoundEvents.AMETHYST_BLOCK_CHIME;
     }
 
     @Override

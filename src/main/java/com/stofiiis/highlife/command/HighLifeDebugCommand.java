@@ -36,9 +36,9 @@ public final class HighLifeDebugCommand {
         ServerPlayer player = source.getPlayerOrException();
         int tolerance = ToleranceData.get(player);
 
-        MobEffectInstance serenity = player.getEffect(ModEffects.RELAXED);
-        MobEffectInstance thirst = player.getEffect(ModEffects.COTTONMOUTH);
-        MobEffectInstance haze = player.getEffect(ModEffects.FOG);
+        MobEffectInstance serenity = player.getEffect(ModEffects.SERENITY);
+        MobEffectInstance thirst = player.getEffect(ModEffects.THIRST);
+        MobEffectInstance haze = player.getEffect(ModEffects.HAZE);
         MobEffectInstance peace = player.getEffect(ModEffects.PEACE);
 
         ItemStack mainHand = player.getMainHandItem();

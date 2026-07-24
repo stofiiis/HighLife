@@ -1,0 +1,76 @@
+{
+  "parent": "highlife:mixer_tech",
+  "criteria": {
+    "has_drying_rack": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:drying_rack"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_seed_mixer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:seed_mixer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_infusion_wand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:infusion_wand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_alchemy_flask": {
+      "conditions": {
+        "items": [
+          {
+            "items": "highlife:alchemy_flask"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.workshop_master.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "highlife:seed_mixer"
+    },
+    "title": {
+      "translate": "advancement.highlife.workshop_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_drying_rack"
+    ],
+    [
+      "has_seed_mixer"
+    ],
+    [
+      "has_infusion_wand"
+    ],
+    [
+      "has_alchemy_flask"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

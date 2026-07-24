@@ -2,24 +2,24 @@
   "roll_cast": {
     "sounds": [
       {
-        "name": "highlife:herb_roll_puff",
-        "volume": 0.85
+        "name": "minecraft:entity.generic.extinguish_fire",
+        "type": "event"
       }
     ]
   },
   "wand_charge": {
     "sounds": [
       {
-        "name": "highlife:infusion_wand_puff",
-        "volume": 0.95
+        "name": "minecraft:block.amethyst_block.chime",
+        "type": "event"
       }
     ]
   },
   "flask_bubble": {
     "sounds": [
       {
-        "name": "highlife:alchemy_flask_puff",
-        "volume": 1.1
+        "name": "minecraft:block.brewing_stand.brew",
+        "type": "event"
       }
     ]
   }

@@ -31,6 +31,9 @@ Icon bases used and converted to Minecraft 16x16 textures:
 ## Custom In-Mod Textures
 - `textures/gui/infusion_wand_control.png` handcrafted for this mod by **stofiiis**.
 - `textures/gui/alchemy_flask_control.png` handcrafted for this mod by **stofiiis**.
+- `textures/gui/seed_mixer.png` handcrafted for this mod by **stofiiis**.
+- All `textures/mob_effect` icons handcrafted for this mod by **stofiiis**.
+- Final GUI and effect textures are generated deterministically by `tools/generate_gui_textures.ps1` and `tools/generate_effect_icons.ps1`.
 
 Source: https://game-icons.net
 License: https://creativecommons.org/licenses/by/3.0/

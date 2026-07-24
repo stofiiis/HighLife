@@ -42,10 +42,6 @@ public class SeedMixerScreen extends AbstractContainerScreen<SeedMixerMenu> {
                 this.imageWidth,
                 this.imageHeight);
 
-        drawSlotState(guiGraphics, x + 35, y + 26, this.menu.hasSeedA(), true);
-        drawSlotState(guiGraphics, x + 53, y + 26, this.menu.hasSeedB(), true);
-        drawSlotState(guiGraphics, x + 35, y + 52, this.menu.hasDirt(), true);
-        drawSlotState(guiGraphics, x + 53, y + 52, this.menu.hasBonemeal(), false);
         drawArrowProgress(guiGraphics, x + 79, y + 39, this.menu.getProgressScaled(24), 0xBEEA6E, 0x7DB946);
     }
 
@@ -109,13 +105,5 @@ public class SeedMixerScreen extends AbstractContainerScreen<SeedMixerMenu> {
             guiGraphics.fill(x + 20, y + 5, x + 20 + headFill, y + 12, 0xFF000000 | darkColor);
             guiGraphics.fill(x + 20, y + 6, x + 20 + headFill, y + 11, 0xFF000000 | lightColor);
         }
-    }
-
-    private static void drawSlotState(GuiGraphics guiGraphics, int x, int y, boolean filled, boolean required) {
-        int color = filled ? 0xFF55C878 : required ? 0xFFE06B55 : 0xFFB89548;
-        guiGraphics.fill(x - 1, y - 1, x + 17, y, color);
-        guiGraphics.fill(x - 1, y + 16, x + 17, y + 17, color);
-        guiGraphics.fill(x - 1, y, x, y + 16, color);
-        guiGraphics.fill(x + 16, y, x + 17, y + 16, color);
     }
 }

@@ -1,156 +1,128 @@
 Add-Type -AssemblyName System.Drawing
 
-$textureDirectory = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\src\main\resources\assets\highlife\textures\gui'))
+$ErrorActionPreference = "Stop"
+$root = Split-Path -Parent $PSScriptRoot
+$output = Join-Path $root "src/main/resources/assets/highlife/textures/gui"
 
-$colors = @{
-    Outline = [System.Drawing.Color]::FromArgb(255, 25, 20, 17)
-    WoodDark = [System.Drawing.Color]::FromArgb(255, 52, 34, 24)
-    Wood = [System.Drawing.Color]::FromArgb(255, 79, 49, 31)
-    WoodLight = [System.Drawing.Color]::FromArgb(255, 117, 72, 39)
-    Panel = [System.Drawing.Color]::FromArgb(255, 28, 31, 28)
-    PanelLight = [System.Drawing.Color]::FromArgb(255, 39, 44, 39)
-    Slot = [System.Drawing.Color]::FromArgb(255, 18, 21, 20)
-    SlotLight = [System.Drawing.Color]::FromArgb(255, 67, 70, 63)
-    BrassDark = [System.Drawing.Color]::FromArgb(255, 128, 84, 25)
-    Brass = [System.Drawing.Color]::FromArgb(255, 205, 147, 45)
-    BrassLight = [System.Drawing.Color]::FromArgb(255, 244, 202, 83)
-    GreenDark = [System.Drawing.Color]::FromArgb(255, 29, 68, 35)
-    Green = [System.Drawing.Color]::FromArgb(255, 62, 122, 56)
-    CyanDark = [System.Drawing.Color]::FromArgb(255, 18, 75, 82)
-    Cyan = [System.Drawing.Color]::FromArgb(255, 42, 153, 166)
-    Bone = [System.Drawing.Color]::FromArgb(255, 218, 215, 184)
-    Dirt = [System.Drawing.Color]::FromArgb(255, 116, 76, 43)
+function New-Canvas {
+    $bitmap = [System.Drawing.Bitmap]::new(176, 166, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
+    for ($y = 0; $y -lt 166; $y++) {
+        for ($x = 0; $x -lt 176; $x++) {
+            $base = if ($y -lt 78) { "#18231B" } else { "#202821" }
+            if ((($x + $y) % 7) -eq 0) {
+                $base = if ($y -lt 78) { "#1B281E" } else { "#232C24" }
+            }
+            $bitmap.SetPixel($x, $y, [System.Drawing.ColorTranslator]::FromHtml($base))
+        }
+    }
+    return $bitmap
 }
 
-function Fill {
-    param($Graphics, $Color, [int]$X, [int]$Y, [int]$Width, [int]$Height)
-    $brush = New-Object System.Drawing.SolidBrush $Color
-    $Graphics.FillRectangle($brush, $X, $Y, $Width, $Height)
+function Set-Rect($bitmap, $x, $y, $width, $height, $color) {
+    $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+    $brush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml($color))
+    $graphics.FillRectangle($brush, $x, $y, $width, $height)
     $brush.Dispose()
+    $graphics.Dispose()
 }
 
-function Draw-Slot {
-    param($Graphics, [int]$X, [int]$Y)
-    Fill $Graphics $colors.Outline $X $Y 18 18
-    Fill $Graphics $colors.SlotLight ($X + 1) ($Y + 1) 16 16
-    Fill $Graphics $colors.Slot ($X + 2) ($Y + 2) 14 14
+function Draw-Frame($bitmap, $x, $y, $width, $height, $accent) {
+    Set-Rect $bitmap $x $y $width $height "#080D09"
+    Set-Rect $bitmap ($x + 1) ($y + 1) ($width - 2) ($height - 2) "#344437"
+    Set-Rect $bitmap ($x + 2) ($y + 2) ($width - 4) ($height - 4) $accent
+    Set-Rect $bitmap ($x + 3) ($y + 3) ($width - 6) ($height - 6) "#1C271E"
 }
 
-function Draw-Frame {
-    param($Graphics, $AccentDark, $Accent)
+function Draw-Slot($bitmap, $x, $y, $accent) {
+    Set-Rect $bitmap ($x - 2) ($y - 2) 20 20 "#070A08"
+    Set-Rect $bitmap ($x - 1) ($y - 1) 18 18 "#536056"
+    Set-Rect $bitmap $x $y 16 16 "#0E130F"
+    Set-Rect $bitmap ($x + 1) ($y + 1) 14 1 $accent
+    Set-Rect $bitmap ($x + 1) ($y + 2) 1 13 "#344238"
+}
 
-    Fill $Graphics $colors.Outline 0 0 176 166
-    Fill $Graphics $colors.WoodDark 1 1 174 164
-    Fill $Graphics $colors.Wood 3 3 170 160
-    Fill $Graphics $colors.Panel 5 18 166 62
-    Fill $Graphics $colors.PanelLight 7 20 162 58
-    Fill $Graphics $colors.Panel 5 82 166 80
-
-    Fill $Graphics $AccentDark 3 3 170 3
-    Fill $Graphics $Accent 4 4 168 1
-    Fill $Graphics $colors.BrassDark 3 3 5 5
-    Fill $Graphics $colors.Brass 4 4 3 3
-    Fill $Graphics $colors.BrassDark 168 3 5 5
-    Fill $Graphics $colors.Brass 169 4 3 3
-    Fill $Graphics $colors.BrassDark 3 158 5 5
-    Fill $Graphics $colors.Brass 4 159 3 3
-    Fill $Graphics $colors.BrassDark 168 158 5 5
-    Fill $Graphics $colors.Brass 169 159 3 3
+function Draw-Inventory($bitmap, $accent) {
+    Draw-Frame $bitmap 3 78 170 85 $accent
+    Set-Rect $bitmap 7 82 162 56 "#182019"
+    Set-Rect $bitmap 7 140 162 20 "#151C16"
 
     for ($row = 0; $row -lt 3; $row++) {
         for ($column = 0; $column -lt 9; $column++) {
-            Draw-Slot $Graphics (7 + $column * 18) (83 + $row * 18)
+            Draw-Slot $bitmap (8 + $column * 18) (84 + $row * 18) $accent
         }
     }
     for ($column = 0; $column -lt 9; $column++) {
-        Draw-Slot $Graphics (7 + $column * 18) 141
+        Draw-Slot $bitmap (8 + $column * 18) 142 $accent
+    }
+}
+
+function Draw-Arrow($bitmap, $accent) {
+    Set-Rect $bitmap 78 44 17 7 "#080C09"
+    Set-Rect $bitmap 79 45 15 5 "#334138"
+    Set-Rect $bitmap 94 41 4 13 "#080C09"
+    Set-Rect $bitmap 95 42 4 11 "#334138"
+    Set-Rect $bitmap 99 44 4 7 "#080C09"
+    Set-Rect $bitmap 100 45 4 5 "#334138"
+    Set-Rect $bitmap 80 46 13 1 $accent
+}
+
+function Draw-TopPanel($bitmap, $accent) {
+    Draw-Frame $bitmap 3 3 170 73 $accent
+    Set-Rect $bitmap 7 14 162 58 "#151E17"
+    Set-Rect $bitmap 8 15 160 1 "#435748"
+    Set-Rect $bitmap 74 20 2 48 "#33483A"
+    Set-Rect $bitmap 108 20 2 48 "#33483A"
+    Set-Rect $bitmap 75 20 1 48 $accent
+    Draw-Arrow $bitmap $accent
+}
+
+function Draw-DeviceBadge($bitmap, $accent, $kind) {
+    Draw-Frame $bitmap 120 28 38 38 $accent
+    Set-Rect $bitmap 126 34 26 26 "#0C140E"
+
+    if ($kind -eq "wand") {
+        Set-Rect $bitmap 130 51 17 3 $accent
+        Set-Rect $bitmap 134 47 13 3 $accent
+        Set-Rect $bitmap 143 43 5 5 "#91C66D"
+        Set-Rect $bitmap 146 40 3 3 "#B9DD83"
+    } elseif ($kind -eq "flask") {
+        Set-Rect $bitmap 137 37 5 7 "#7FD8E7"
+        Set-Rect $bitmap 133 44 13 12 "#326B72"
+        Set-Rect $bitmap 135 48 9 6 "#67D3E3"
+        Set-Rect $bitmap 138 34 3 3 "#A7EEF2"
+    } else {
+        Set-Rect $bitmap 135 39 8 17 "#6EA457"
+        Set-Rect $bitmap 129 46 20 5 "#6EA457"
+        Set-Rect $bitmap 132 42 5 4 "#8DC86B"
+        Set-Rect $bitmap 141 42 5 4 "#8DC86B"
+        Set-Rect $bitmap 132 57 14 2 "#B89A43"
+    }
+}
+
+function Save-Gui($name, $kind, $accent) {
+    $bitmap = New-Canvas
+    Draw-TopPanel $bitmap $accent
+    Draw-Inventory $bitmap $accent
+
+    if ($kind -eq "wand") {
+        Draw-Slot $bitmap 44 39 $accent
+    } elseif ($kind -eq "flask") {
+        Draw-Slot $bitmap 44 26 $accent
+        Draw-Slot $bitmap 44 52 $accent
+    } else {
+        Draw-Slot $bitmap 35 26 $accent
+        Draw-Slot $bitmap 53 26 $accent
+        Draw-Slot $bitmap 35 52 $accent
+        Draw-Slot $bitmap 53 52 $accent
     }
 
-    Fill $Graphics $colors.WoodDark 5 136 166 3
-    Fill $Graphics $colors.BrassDark 5 136 166 1
-    Fill $Graphics $colors.BrassDark 74 22 2 52
-    Fill $Graphics $colors.Brass 75 23 1 50
-    Fill $Graphics $colors.BrassDark 108 22 2 52
-    Fill $Graphics $colors.Brass 108 23 1 50
-}
-
-function Draw-Arrow {
-    param($Graphics, $Color)
-    Fill $Graphics $colors.Outline 79 45 15 5
-    Fill $Graphics $colors.Outline 93 42 5 11
-    Fill $Graphics $Color 80 46 14 3
-    Fill $Graphics $Color 94 44 2 7
-}
-
-function Draw-HerbGhost {
-    param($Graphics, [int]$X, [int]$Y, $Color)
-    Fill $Graphics $Color ($X + 8) ($Y + 4) 2 10
-    Fill $Graphics $Color ($X + 4) ($Y + 6) 5 3
-    Fill $Graphics $Color ($X + 9) ($Y + 9) 5 3
-}
-
-function Draw-SeedGhost {
-    param($Graphics, [int]$X, [int]$Y)
-    Fill $Graphics $colors.Green ($X + 6) ($Y + 5) 3 3
-    Fill $Graphics $colors.Brass ($X + 10) ($Y + 9) 3 3
-}
-
-function New-GuiTexture {
-    param([string]$Name, $AccentDark, $Accent, [scriptblock]$DrawWorkspace)
-
-    $bitmap = New-Object System.Drawing.Bitmap 176, 166, ([System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
-    $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
-    $graphics.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::None
-    Draw-Frame $graphics $AccentDark $Accent
-    & $DrawWorkspace $graphics
-    $bitmap.Save((Join-Path $textureDirectory "$Name.png"), [System.Drawing.Imaging.ImageFormat]::Png)
-    $graphics.Dispose()
+    Draw-DeviceBadge $bitmap $accent $kind
+    $path = Join-Path $output $name
+    $bitmap.Save($path, [System.Drawing.Imaging.ImageFormat]::Png)
     $bitmap.Dispose()
 }
 
-New-GuiTexture 'infusion_wand_control' $colors.GreenDark $colors.Green {
-    param($graphics)
-    Draw-Slot $graphics 43 38
-    Draw-HerbGhost $graphics 43 38 $colors.Green
-    Draw-Arrow $graphics $colors.Green
-    Fill $graphics $colors.GreenDark 116 27 44 38
-    Fill $graphics $colors.Outline 119 30 38 32
-    Fill $graphics $colors.Green 137 34 3 24
-    Fill $graphics $colors.Brass 133 51 11 3
-}
-
-New-GuiTexture 'alchemy_flask_control' $colors.CyanDark $colors.Cyan {
-    param($graphics)
-    Draw-Slot $graphics 43 25
-    Draw-HerbGhost $graphics 43 25 $colors.Green
-    Draw-Slot $graphics 43 51
-    Fill $graphics $colors.CyanDark 48 56 8 7
-    Fill $graphics $colors.Cyan 50 54 4 2
-    Draw-Arrow $graphics $colors.Cyan
-    Fill $graphics $colors.CyanDark 116 27 44 38
-    Fill $graphics $colors.Outline 119 30 38 32
-    Fill $graphics $colors.Cyan 130 47 16 11
-    Fill $graphics $colors.Cyan 134 36 8 12
-    Fill $graphics $colors.Brass 132 34 12 3
-}
-
-New-GuiTexture 'seed_mixer' $colors.GreenDark $colors.Green {
-    param($graphics)
-    Draw-Slot $graphics 34 25
-    Draw-SeedGhost $graphics 34 25
-    Draw-Slot $graphics 52 25
-    Draw-SeedGhost $graphics 52 25
-    Draw-Slot $graphics 34 51
-    Fill $graphics $colors.Dirt 39 57 8 7
-    Fill $graphics $colors.WoodLight 40 56 6 2
-    Draw-Slot $graphics 52 51
-    Fill $graphics $colors.Bone 58 56 6 8
-    Fill $graphics $colors.Bone 56 59 10 3
-    Draw-Arrow $graphics $colors.Green
-    Fill $graphics $colors.GreenDark 116 27 44 38
-    Fill $graphics $colors.Outline 119 30 38 32
-    Fill $graphics $colors.Green 135 42 7 14
-    Fill $graphics $colors.Green 129 48 7 6
-    Fill $graphics $colors.Green 142 46 7 6
-    Fill $graphics $colors.Brass 132 56 14 3
-}
+New-Item -ItemType Directory -Force -Path $output | Out-Null
+Save-Gui "infusion_wand_control.png" "wand" "#4D8B5A"
+Save-Gui "alchemy_flask_control.png" "flask" "#397E87"
+Save-Gui "seed_mixer.png" "mixer" "#64834D"

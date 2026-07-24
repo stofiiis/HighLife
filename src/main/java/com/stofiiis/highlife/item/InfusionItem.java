@@ -69,7 +69,7 @@ public class InfusionItem extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
-        boolean hadRelaxedBeforeUse = livingEntity.hasEffect(ModEffects.RELAXED);
+        boolean hadRelaxedBeforeUse = livingEntity.hasEffect(ModEffects.SERENITY);
         boolean hadPeaceBeforeUse = livingEntity.hasEffect(ModEffects.PEACE);
         ItemStack result = this.consumesItemOnUse() ? super.finishUsingItem(stack, level, livingEntity) : stack;
 
@@ -115,17 +115,17 @@ public class InfusionItem extends Item {
         int hazeTicks = Math.max(80, Math.round(this.hazeDuration * (0.8F + 0.2F * potency) * durationMultiplier * harshnessMultiplier));
 
         int serenityAmplifier = potency >= 1.5F ? 1 : 0;
-        player.addEffect(new MobEffectInstance(ModEffects.RELAXED, serenityTicks, serenityAmplifier, true, true, true));
+        player.addEffect(new MobEffectInstance(ModEffects.SERENITY, serenityTicks, serenityAmplifier, true, true, true));
         player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, Math.max(100, serenityTicks / 3), 0, true, false, true));
 
         float thirstChance = Mth.clamp(0.78F * HighLifeConfig.getThirstChanceMultiplier() * harshnessMultiplier, 0.0F, 1.0F);
         if (player.getRandom().nextFloat() < thirstChance) {
-            player.addEffect(new MobEffectInstance(ModEffects.COTTONMOUTH, thirstTicks, potency >= 1.4F ? 1 : 0, true, true, true));
+            player.addEffect(new MobEffectInstance(ModEffects.THIRST, thirstTicks, potency >= 1.4F ? 1 : 0, true, true, true));
         }
 
         float hazeChance = Mth.clamp((0.5F + 0.15F * potency) * HighLifeConfig.getHazeChanceMultiplier() * harshnessMultiplier, 0.0F, 1.0F);
         if (player.getRandom().nextFloat() < hazeChance) {
-            player.addEffect(new MobEffectInstance(ModEffects.FOG, hazeTicks, potency >= 1.6F ? 1 : 0, true, true, true));
+            player.addEffect(new MobEffectInstance(ModEffects.HAZE, hazeTicks, potency >= 1.6F ? 1 : 0, true, true, true));
         }
 
         if (this.grantsPeace) {

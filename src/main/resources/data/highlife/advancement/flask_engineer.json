@@ -1,5 +1,5 @@
 {
-  "parent": "highlife:infusion_wand_apprentice",
+  "parent": "highlife:wand_apprentice",
   "criteria": {
     "has_alchemy_flask": {
       "conditions": {

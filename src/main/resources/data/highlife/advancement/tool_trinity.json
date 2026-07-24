@@ -1,5 +1,5 @@
 {
-  "parent": "highlife:alchemy_flask_engineer",
+  "parent": "highlife:flask_engineer",
   "criteria": {
     "all_three_tools": {
       "trigger": "minecraft:impossible"

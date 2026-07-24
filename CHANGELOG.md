@@ -12,11 +12,24 @@ All notable changes to this project are documented in this file.
 - Updated all crop stages with rounded fantasy leaves and clearer growth progression.
 - Seed Mixer inventory rendering now uses the same 3D model as the placed block.
 - Block selection and collision shapes now follow the slimmer 3D models.
+- Rebuilt all control GUIs with pixel-perfect slot alignment, separated work areas, and restrained device-specific accents.
+- Seed Mixer input slots now split stacked parent seeds correctly and identify missing ingredients.
+- Replaced all four status-effect icons with distinct custom silhouettes.
+- Replaced missing custom audio files with reliable built-in Minecraft sound events.
+
+### Fixed
+- Fixed five advancement entries being discarded because they referenced nonexistent parent IDs.
+- Restored the complete Wand and Alchemy Flask advancement branches.
+
+### Added
+- Added the `Master Workshop` challenge for collecting the complete processing setup.
+- Added the `Gene Archive` challenge for completing ten seed crosses.
 
 ### Development
 - Added an archived texture concept sheet for future art direction.
 - Added a deterministic PowerShell generator for the final 16x16 item sprites.
 - Added deterministic generators for block textures and block models.
+- Added deterministic generators for control GUIs and status-effect icons.
 
 ## [1.0.0] - 2026-02-27
 

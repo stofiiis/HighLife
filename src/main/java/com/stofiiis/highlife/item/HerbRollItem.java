@@ -1,9 +1,8 @@
 package com.stofiiis.highlife.item;
 
-import com.stofiiis.highlife.registry.ModSounds;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -27,7 +26,7 @@ public class HerbRollItem extends InfusionItem {
 
     @Override
     protected SoundEvent getInfusionSound(ItemStack stack, Player player) {
-        return ModSounds.ROLL_CAST.get();
+        return SoundEvents.FIRE_EXTINGUISH;
     }
 
     @Override

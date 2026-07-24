@@ -2,7 +2,6 @@ package com.stofiiis.highlife.item;
 
 import com.stofiiis.highlife.config.HighLifeConfig;
 import com.stofiiis.highlife.menu.AlchemyFlaskControlMenu;
-import com.stofiiis.highlife.registry.ModSounds;
 import com.stofiiis.highlife.util.AdvancementTracker;
 import com.stofiiis.highlife.util.StrainData;
 
@@ -47,7 +46,7 @@ public class AlchemyFlaskItem extends InfusionItem {
 
     @Override
     protected SoundEvent getInfusionSound(ItemStack stack, Player player) {
-        return ModSounds.FLASK_BUBBLE.get();
+        return SoundEvents.BREWING_STAND_BREW;
     }
 
     @Override

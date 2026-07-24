@@ -1,0 +1,30 @@
+{
+  "parent": "highlife:first_cross",
+  "criteria": {
+    "ten_crosses": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.highlife.gene_archive.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "highlife:mystic_herb_seeds"
+    },
+    "title": {
+      "translate": "advancement.highlife.gene_archive.title"
+    }
+  },
+  "requirements": [
+    [
+      "ten_crosses"
+    ]
+  ],
+  "rewards": {
+    "experience": 250
+  },
+  "sends_telemetry_event": true
+}

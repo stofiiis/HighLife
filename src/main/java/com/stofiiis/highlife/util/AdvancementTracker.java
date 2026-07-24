@@ -14,6 +14,7 @@ public final class AdvancementTracker {
     private static final String TAG_USED_HERB_ROLL = HighLifeMod.MODID + ".used_herb_roll";
     private static final String TAG_USED_INFUSION_WAND = HighLifeMod.MODID + ".used_infusion_wand";
     private static final String TAG_USED_ALCHEMY_FLASK = HighLifeMod.MODID + ".used_alchemy_flask";
+    private static final String TAG_SEED_MIX_COUNT = HighLifeMod.MODID + ".seed_mix_count";
 
     private AdvancementTracker() {
     }
@@ -72,6 +73,12 @@ public final class AdvancementTracker {
         }
 
         grant(serverPlayer, "first_cross", "cross_done");
+        CompoundTag persistentData = serverPlayer.getPersistentData();
+        int mixCount = persistentData.getIntOr(TAG_SEED_MIX_COUNT, 0) + 1;
+        persistentData.putInt(TAG_SEED_MIX_COUNT, mixCount);
+        if (mixCount >= 10) {
+            grant(serverPlayer, "gene_archive", "ten_crosses");
+        }
         if (boosted) {
             grant(serverPlayer, "bonemeal_hacker", "boosted_cross");
         }
