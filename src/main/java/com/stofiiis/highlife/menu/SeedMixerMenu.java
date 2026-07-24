@@ -65,11 +65,21 @@ public class SeedMixerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
             }
+
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
         });
         this.addSlot(new Slot(this.container, SLOT_SEED_B, 53, 26) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
+            }
+
+            @Override
+            public int getMaxStackSize() {
+                return 1;
             }
         });
         this.addSlot(new Slot(this.container, SLOT_DIRT, 35, 52) {
@@ -77,11 +87,21 @@ public class SeedMixerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(Items.DIRT);
             }
+
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
         });
         this.addSlot(new Slot(this.container, SLOT_BONEMEAL, 53, 52) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(Items.BONE_MEAL);
+            }
+
+            @Override
+            public int getMaxStackSize() {
+                return 1;
             }
         });
 
@@ -208,6 +228,22 @@ public class SeedMixerMenu extends AbstractContainerMenu {
             return 0;
         }
         return Math.max(1, (this.progressMax - this.progress + 19) / 20);
+    }
+
+    public boolean hasSeedA() {
+        return this.container.getItem(SLOT_SEED_A).is(ModItems.MYSTIC_HERB_SEEDS.get());
+    }
+
+    public boolean hasSeedB() {
+        return this.container.getItem(SLOT_SEED_B).is(ModItems.MYSTIC_HERB_SEEDS.get());
+    }
+
+    public boolean hasDirt() {
+        return this.container.getItem(SLOT_DIRT).is(Items.DIRT);
+    }
+
+    public boolean hasBonemeal() {
+        return this.container.getItem(SLOT_BONEMEAL).is(Items.BONE_MEAL);
     }
 
     private void addPlayerInventorySlots(Inventory inventory) {

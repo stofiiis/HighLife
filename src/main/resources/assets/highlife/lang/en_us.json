@@ -126,5 +126,9 @@
   "screen.highlife.refilling_water": "Refilling water...",
   "screen.highlife.seed_mixer_idle": "Insert 2 seeds, dirt and optional bonemeal",
   "screen.highlife.seed_mixer_mixing": "Mixing... %s s left",
-  "screen.highlife.seed_mixer_ready": "Done. Right click block to collect seed"
+  "screen.highlife.seed_mixer_ready": "Done. Right click block to collect seed",
+  "screen.highlife.seed_mixer_need_seed_a": "Insert parent seed A",
+  "screen.highlife.seed_mixer_need_seed_b": "Insert parent seed B",
+  "screen.highlife.seed_mixer_need_dirt": "Insert dirt catalyst",
+  "screen.highlife.seed_mixer_starting": "Starting seed fusion..."
 }

@@ -126,5 +126,9 @@
   "screen.highlife.refilling_water": "Doplnovani vody...",
   "screen.highlife.seed_mixer_idle": "Vloz 2 seedy, hlinu a volitelne bonemeal",
   "screen.highlife.seed_mixer_mixing": "Michani... zbyva %s s",
-  "screen.highlife.seed_mixer_ready": "Hotovo. Pravym klikem na block vyzvednes seed"
+  "screen.highlife.seed_mixer_ready": "Hotovo. Pravym klikem na block vyzvednes seed",
+  "screen.highlife.seed_mixer_need_seed_a": "Vloz rodicovsky seed A",
+  "screen.highlife.seed_mixer_need_seed_b": "Vloz rodicovsky seed B",
+  "screen.highlife.seed_mixer_need_dirt": "Vloz hlineny katalyzator",
+  "screen.highlife.seed_mixer_starting": "Spoustim spojeni seedu..."
 }
