@@ -74,6 +74,23 @@ public class SeedMixerScreen extends AbstractContainerScreen<SeedMixerMenu> {
     protected void renderTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         super.renderTooltip(guiGraphics, mouseX, mouseY);
 
+        if (!this.menu.hasSeedA() && this.isHovering(35, 26, 16, 16, mouseX, mouseY)) {
+            guiGraphics.setTooltipForNextFrame(this.font, Component.translatable("screen.highlife.seed_mixer_slot_seed_a"), mouseX, mouseY);
+            return;
+        }
+        if (!this.menu.hasSeedB() && this.isHovering(53, 26, 16, 16, mouseX, mouseY)) {
+            guiGraphics.setTooltipForNextFrame(this.font, Component.translatable("screen.highlife.seed_mixer_slot_seed_b"), mouseX, mouseY);
+            return;
+        }
+        if (!this.menu.hasDirt() && this.isHovering(35, 52, 16, 16, mouseX, mouseY)) {
+            guiGraphics.setTooltipForNextFrame(this.font, Component.translatable("screen.highlife.seed_mixer_slot_dirt"), mouseX, mouseY);
+            return;
+        }
+        if (!this.menu.hasBonemeal() && this.isHovering(53, 52, 16, 16, mouseX, mouseY)) {
+            guiGraphics.setTooltipForNextFrame(this.font, Component.translatable("screen.highlife.seed_mixer_slot_bonemeal"), mouseX, mouseY);
+            return;
+        }
+
         int arrowX = this.leftPos + 79;
         int arrowY = this.topPos + 39;
         if (this.isHovering(arrowX - this.leftPos, arrowY - this.topPos, 24, 17, mouseX, mouseY)) {

@@ -1,5 +1,6 @@
 package com.stofiiis.highlife.block.entity;
 
+import com.stofiiis.highlife.item.MysticHerbSeedsItem;
 import com.stofiiis.highlife.registry.ModBlockEntities;
 import com.stofiiis.highlife.registry.ModItems;
 import com.stofiiis.highlife.util.AdvancementTracker;
@@ -140,8 +141,8 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
     }
 
     private boolean canStartMix() {
-        return this.items.get(SLOT_SEED_A).is(ModItems.MYSTIC_HERB_SEEDS.get())
-                && this.items.get(SLOT_SEED_B).is(ModItems.MYSTIC_HERB_SEEDS.get())
+        return isParentSample(this.items.get(SLOT_SEED_A))
+                && isParentSample(this.items.get(SLOT_SEED_B))
                 && this.items.get(SLOT_DIRT).is(Items.DIRT);
     }
 
@@ -282,7 +283,7 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
     @Override
     public boolean canPlaceItem(int slot, ItemStack stack) {
         return switch (slot) {
-            case SLOT_SEED_A, SLOT_SEED_B -> stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
+            case SLOT_SEED_A, SLOT_SEED_B -> isParentSample(stack);
             case SLOT_DIRT -> stack.is(Items.DIRT);
             case SLOT_BONEMEAL -> stack.is(Items.BONE_MEAL);
             default -> false;
@@ -294,6 +295,10 @@ public class SeedMixerBlockEntity extends BlockEntity implements Container {
         for (int i = 0; i < this.items.size(); i++) {
             this.items.set(i, ItemStack.EMPTY);
         }
+    }
+
+    private static boolean isParentSample(ItemStack stack) {
+        return stack.getItem() instanceof MysticHerbSeedsItem;
     }
 
     @Override

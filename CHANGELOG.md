@@ -14,6 +14,8 @@ All notable changes to this project are documented in this file.
 - Block selection and collision shapes now follow the slimmer 3D models.
 - Rebuilt all control GUIs with pixel-perfect slot alignment, separated work areas, and restrained device-specific accents.
 - Seed Mixer input slots now split stacked parent seeds correctly and identify missing ingredients.
+- Added concise usage instructions to every HighLife item tooltip.
+- Replaced internal registry-style wording in advancement and gameplay text with localized display names.
 - Replaced all four status-effect icons with distinct custom silhouettes.
 - Replaced missing custom audio files with reliable built-in Minecraft sound events.
 
@@ -30,6 +32,7 @@ All notable changes to this project are documented in this file.
 - Added a deterministic PowerShell generator for the final 16x16 item sprites.
 - Added deterministic generators for block textures and block models.
 - Added deterministic generators for control GUIs and status-effect icons.
+- Added two CurseForge item showcase images and a reproducible showcase generator.
 
 ## [1.0.0] - 2026-02-27
 

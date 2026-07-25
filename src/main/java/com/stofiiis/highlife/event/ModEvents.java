@@ -12,6 +12,7 @@ import com.stofiiis.highlife.util.SeedCategoryData;
 import com.stofiiis.highlife.util.StrainData;
 import com.stofiiis.highlife.util.ToleranceData;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -28,12 +29,21 @@ import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 public final class ModEvents {
+    @SubscribeEvent
+    public static void onItemTooltip(ItemTooltipEvent event) {
+        String usageKey = getUsageKey(event.getItemStack());
+        if (usageKey != null) {
+            event.getToolTip().add(Component.translatable(usageKey).withStyle(ChatFormatting.GRAY));
+        }
+    }
+
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
         HighLifeDebugCommand.register(event.getDispatcher());
@@ -212,5 +222,19 @@ public final class ModEvents {
         return item == ModItems.MYSTIC_HERB_BUNDLE.get()
                 || item == ModItems.DRIED_MYSTIC_HERB.get()
                 || item == ModItems.HERB_ROLL.get();
+    }
+
+    private static String getUsageKey(ItemStack stack) {
+        if (stack.is(ModItems.MYSTIC_HERB_SEEDS.get())) return "tooltip.highlife.usage.mystic_herb_seeds";
+        if (stack.is(ModItems.MYSTIC_HERB_BUNDLE.get())) return "tooltip.highlife.usage.mystic_herb_bundle";
+        if (stack.is(ModItems.DRIED_MYSTIC_HERB.get())) return "tooltip.highlife.usage.dried_mystic_herb";
+        if (stack.is(ModItems.ROLLING_PAPER.get())) return "tooltip.highlife.usage.rolling_paper";
+        if (stack.is(ModItems.HERB_ROLL.get())) return "tooltip.highlife.usage.herb_roll";
+        if (stack.is(ModItems.INFUSION_WAND.get())) return "tooltip.highlife.usage.infusion_wand";
+        if (stack.is(ModItems.ALCHEMY_FLASK.get())) return "tooltip.highlife.usage.alchemy_flask";
+        if (stack.is(ModItems.HERB_COOKIE.get())) return "tooltip.highlife.usage.herb_cookie";
+        if (stack.is(ModItems.DRYING_RACK.get())) return "tooltip.highlife.usage.drying_rack";
+        if (stack.is(ModItems.SEED_MIXER.get())) return "tooltip.highlife.usage.seed_mixer";
+        return null;
     }
 }

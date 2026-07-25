@@ -1,6 +1,7 @@
 package com.stofiiis.highlife.menu;
 
 import com.stofiiis.highlife.block.entity.SeedMixerBlockEntity;
+import com.stofiiis.highlife.item.MysticHerbSeedsItem;
 import com.stofiiis.highlife.registry.ModBlocks;
 import com.stofiiis.highlife.registry.ModItems;
 import com.stofiiis.highlife.registry.ModMenus;
@@ -63,7 +64,7 @@ public class SeedMixerMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(this.container, SLOT_SEED_A, 35, 26) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
+                return isParentSample(stack);
             }
 
             @Override
@@ -74,7 +75,7 @@ public class SeedMixerMenu extends AbstractContainerMenu {
         this.addSlot(new Slot(this.container, SLOT_SEED_B, 53, 26) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModItems.MYSTIC_HERB_SEEDS.get());
+                return isParentSample(stack);
             }
 
             @Override
@@ -164,7 +165,7 @@ public class SeedMixerMenu extends AbstractContainerMenu {
             if (!this.moveItemStackTo(sourceStack, INV_START, INV_END + 1, true)) {
                 return ItemStack.EMPTY;
             }
-        } else if (sourceStack.is(ModItems.MYSTIC_HERB_SEEDS.get())) {
+        } else if (isParentSample(sourceStack)) {
             if (!this.moveItemStackTo(sourceStack, SLOT_SEED_A, SLOT_DIRT, false)) {
                 return ItemStack.EMPTY;
             }
@@ -231,11 +232,11 @@ public class SeedMixerMenu extends AbstractContainerMenu {
     }
 
     public boolean hasSeedA() {
-        return this.container.getItem(SLOT_SEED_A).is(ModItems.MYSTIC_HERB_SEEDS.get());
+        return isParentSample(this.container.getItem(SLOT_SEED_A));
     }
 
     public boolean hasSeedB() {
-        return this.container.getItem(SLOT_SEED_B).is(ModItems.MYSTIC_HERB_SEEDS.get());
+        return isParentSample(this.container.getItem(SLOT_SEED_B));
     }
 
     public boolean hasDirt() {
@@ -244,6 +245,10 @@ public class SeedMixerMenu extends AbstractContainerMenu {
 
     public boolean hasBonemeal() {
         return this.container.getItem(SLOT_BONEMEAL).is(Items.BONE_MEAL);
+    }
+
+    private static boolean isParentSample(ItemStack stack) {
+        return stack.getItem() instanceof MysticHerbSeedsItem;
     }
 
     private void addPlayerInventorySlots(Inventory inventory) {
