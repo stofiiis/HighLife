@@ -58,7 +58,14 @@ function Draw-Showcase($backgroundPath, $outputName, $title, $subtitle, $entries
     }
 
     New-Item -ItemType Directory -Force -Path $output | Out-Null
-    $canvas.Save((Join-Path $output $outputName), [System.Drawing.Imaging.ImageFormat]::Png)
+    $jpegCodec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() |
+        Where-Object { $_.MimeType -eq "image/jpeg" } |
+        Select-Object -First 1
+    $qualityEncoder = [System.Drawing.Imaging.Encoder]::Quality
+    $encoderParameters = [System.Drawing.Imaging.EncoderParameters]::new(1)
+    $encoderParameters.Param[0] = [System.Drawing.Imaging.EncoderParameter]::new($qualityEncoder, [long]92)
+    $canvas.Save((Join-Path $output $outputName), $jpegCodec, $encoderParameters)
+    $encoderParameters.Dispose()
 
     $headerBrush.Dispose()
     $titleBrush.Dispose()
@@ -89,5 +96,5 @@ $toolEntries = @(
     @{ Label = "Herb Cookie"; Path = Join-Path $assets "item/herb_cookie.png"; Size = 175 }
 )
 
-Draw-Showcase (Join-Path $root "art_sources/curseforge_grow_process_background.png") "01-grow-and-process.png" "GROW & PROCESS" "From rare seeds to refined herbal ingredients" $growEntries
-Draw-Showcase (Join-Path $root "art_sources/curseforge_infusion_tools_background.png") "02-infusion-toolkit.png" "INFUSION TOOLKIT" "Craft, load and master every herbal tool" $toolEntries
+Draw-Showcase (Join-Path $root "art_sources/curseforge_grow_process_background.png") "01-grow-and-process.jpg" "GROW & PROCESS" "From rare seeds to refined herbal ingredients" $growEntries
+Draw-Showcase (Join-Path $root "art_sources/curseforge_infusion_tools_background.png") "02-infusion-toolkit.jpg" "INFUSION TOOLKIT" "Craft, load and master every herbal tool" $toolEntries

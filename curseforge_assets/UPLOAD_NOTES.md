@@ -6,10 +6,10 @@ Grow, dry and breed mystical herbs, then master custom infusion tools, genetics,
 
 ## Gallery Order
 
-1. `01-grow-and-process.png`
+1. `01-grow-and-process.jpg`
    - Title: Grow & Process
    - Caption: Discover seeds, harvest fresh bundles, dry ingredients and breed new strains.
-2. `02-infusion-toolkit.png`
+2. `02-infusion-toolkit.jpg`
    - Title: Infusion Toolkit
    - Caption: Craft and load a complete set of custom herbal infusion tools.
 
